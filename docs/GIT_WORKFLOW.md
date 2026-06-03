@@ -77,6 +77,16 @@ git checkout -b fix/contact-form-action
 # then cherry-pick or merge main back into develop
 ```
 
+## History rebuild (maintainers)
+
+If you need to regenerate the layered commit stack:
+
+```bash
+./scripts/rebuild-git-history.sh
+```
+
+This keeps a backup at `legacy/main`. Requires a clean working tree.
+
 ## First-time setup after clone
 
 ```bash
