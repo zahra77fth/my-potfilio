@@ -6,7 +6,7 @@ const rawModules = import.meta.glob('../../../content/articles/*.mdx', {
   query: '?raw',
   import: 'default',
   eager: true,
-}) as Record<string, string>
+}) as Record<string, unknown>
 
 const componentModules = import.meta.glob('../../../content/articles/*.mdx') as Record<
   string,
@@ -28,11 +28,20 @@ function asFrontmatter(data: Record<string, unknown>): ArticleFrontmatter {
   }
 }
 
+function asRawSource(value: unknown): string {
+  if (typeof value === 'string') return value
+  if (value && typeof value === 'object' && 'default' in value) {
+    const nested = (value as { default: unknown }).default
+    if (typeof nested === 'string') return nested
+  }
+  throw new Error('Article source must be a raw string (check Vite MDX/?raw plugin order)')
+}
+
 function buildCatalog(): ArticleRecord[] {
   const articles: ArticleRecord[] = []
 
   for (const [path, raw] of Object.entries(rawModules)) {
-    const { data, content } = parseFrontmatter(raw)
+    const { data, content } = parseFrontmatter(asRawSource(raw))
     const frontmatter = asFrontmatter(data)
     if (frontmatter.draft) continue
 

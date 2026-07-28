@@ -15,31 +15,42 @@ function isDeferredVendor(dep: string) {
   return /(?:^|\/)(?:r3f|three|GalaxyCanvas|SkyCanvas|SceneCanvasShell)-/.test(dep)
 }
 
+const mdxPlugin = mdx({
+  remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
+  rehypePlugins: [
+    rehypeSlug,
+    [
+      rehypeAutolinkHeadings,
+      {
+        behavior: 'wrap',
+        properties: { className: ['article-heading-link'] },
+      },
+    ],
+    [
+      rehypePrettyCode,
+      {
+        theme: { light: 'github-light', dark: 'github-dark' },
+        keepBackground: false,
+      },
+    ],
+  ],
+})
+
+/** Let Vite's `?raw` loader win — MDX must not compile catalog source strings. */
+const mdxExceptRaw = {
+  ...mdxPlugin,
+  enforce: 'pre' as const,
+  transform(code: string, id: string) {
+    if (id.includes('?raw') || id.includes('&raw')) return null
+    const transform = mdxPlugin.transform
+    if (typeof transform !== 'function') return null
+    return transform.call(this, code, id)
+  },
+}
+
 export default defineConfig({
   plugins: [
-    {
-      enforce: 'pre',
-      ...mdx({
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
-        rehypePlugins: [
-          rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: 'wrap',
-              properties: { className: ['article-heading-link'] },
-            },
-          ],
-          [
-            rehypePrettyCode,
-            {
-              theme: { light: 'github-light', dark: 'github-dark' },
-              keepBackground: false,
-            },
-          ],
-        ],
-      }),
-    },
+    mdxExceptRaw,
     react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
     tailwindcss(),
     seoAssetsPlugin(),
