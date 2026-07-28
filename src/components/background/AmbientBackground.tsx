@@ -1,7 +1,8 @@
 import { useTheme } from '../../context/ThemeContext'
 
 /**
- * CSS-only atmosphere — light mode sky is fully handled by SkyCanvas (no overlay).
+ * Optional CSS atmosphere layer above the scene gradient.
+ * Light mode keeps content readable; dark mode relies on `.scene-bg--dark`.
  */
 export function AmbientBackground() {
   const { theme } = useTheme()

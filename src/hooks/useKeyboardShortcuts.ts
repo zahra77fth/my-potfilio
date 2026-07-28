@@ -20,6 +20,8 @@ export function useKeyboardShortcuts({ resumeUrl }: UseKeyboardShortcutsOptions)
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return
       if (isTypingTarget(e.target)) return
+      // Don't steal keys while a modal/menu dialog is open
+      if (document.querySelector('[aria-modal="true"]')) return
 
       const key = e.key.toLowerCase()
 

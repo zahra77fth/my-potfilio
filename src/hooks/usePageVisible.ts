@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
+/** True when the document is visible — use to pause WebGL / video work. */
 export function usePageVisible() {
   const [visible, setVisible] = useState(
-    () => typeof document !== 'undefined' && document.visibilityState === 'visible',
+    () => typeof document === 'undefined' || document.visibilityState === 'visible',
   )
 
   useEffect(() => {

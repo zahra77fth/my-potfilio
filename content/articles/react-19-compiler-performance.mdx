@@ -1,0 +1,49 @@
+---
+title: Deep Dive into React 19 Compiler, useEvent, and Performance Patterns
+description: Practical guidance for teams adopting the new toolchain — compiler mental models, useEvent semantics, and measurable performance wins.
+date: 2025-11-12
+tags:
+  - React
+  - Performance
+category: Performance
+image: /writing/react-19.svg
+mediumUrl: ""
+---
+
+The React 19 compiler changes how teams think about memoization. Instead of sprinkling `useMemo` and `useCallback` as a reflex, you teach the compiler which values are safe to freeze and which updates must stay hot.
+
+## Compiler mental models
+
+Treat the compiler as a **build-time purity checker**, not a magic speed button.
+
+1. Prefer plain derived values in render when inputs are cheap.
+2. Keep side effects in effects or event handlers — never in render.
+3. Measure before and after with React Profiler and Web Vitals.
+
+```tsx
+function Price({ cents, currency }: { cents: number; currency: string }) {
+  // Cheap derivation — let the compiler decide, avoid reflexive memo
+  const label = new Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency,
+  }).format(cents / 100)
+
+  return <span>{label}</span>
+}
+```
+
+## useEvent (and friends)
+
+Event handlers often close over changing props. The newer event APIs (and patterns like `useEffectEvent`) keep the **identity stable** while reading the latest values when the event fires.
+
+That matters when you pass handlers into memoized children or subscribe once in an effect.
+
+## Measurable wins
+
+Ship a checklist with every compiler adoption PR:
+
+- LCP / INP on the two heaviest routes
+- Commit duration for the primary interaction
+- Bundle delta (compiler output can grow or shrink)
+
+If you cannot show a number, you are guessing.

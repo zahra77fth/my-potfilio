@@ -72,7 +72,11 @@ export function Footer() {
             <code className="rounded-md border border-border/60 px-1.5 py-0.5">src/data/</code>
           </span>
           {site.resumeUrl && (
-            <span className="ds-kbd-hint">
+            <span
+              className="ds-kbd-hint"
+              title="Keyboard shortcuts"
+              aria-label="Keyboard shortcuts: press P to jump to projects, R to open résumé"
+            >
               <kbd className="ds-kbd">P</kbd> projects · <kbd className="ds-kbd">R</kbd> résumé
             </span>
           )}

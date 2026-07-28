@@ -1,8 +1,8 @@
-import { OrthographicCamera } from '@react-three/drei'
 import type { PerformanceTier } from '../../../hooks/usePerformanceTier'
 import { Birds } from './Birds'
 import { CloudLayer } from './CloudLayer'
 import { Kite } from './Kite'
+import { SkyOrthoCamera } from './SkyOrthoCamera'
 import { SkyWorldGroup } from './SkyWorldGroup'
 import { SkyBackdrop } from './SkyBackdrop'
 import { SkyFlightRig } from './SkyFlightRig'
@@ -19,7 +19,7 @@ export function SkyScene({ quality }: SkySceneProps) {
 
   return (
     <>
-      <OrthographicCamera makeDefault position={[0, 0, 10]} near={0.1} far={50} />
+      <SkyOrthoCamera />
       <SkyInteractionRig />
       <SkyFlightRig />
       <SkyBackdrop />

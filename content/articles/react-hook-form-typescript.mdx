@@ -1,0 +1,42 @@
+---
+title: Building a Dynamic Form with React Hook Form and TypeScript
+description: Typed schemas, accessible field wiring, and validation flows that scale from simple forms to multi-step wizards.
+date: 2025-06-18
+tags:
+  - TypeScript
+  - React Hook Form
+category: Forms
+image: /writing/rhf-typescript.svg
+mediumUrl: ""
+---
+
+Forms fail in production when types, validation, and accessibility drift apart. Keep them on one rail.
+
+## One schema, many surfaces
+
+Use a single Zod (or similar) schema for:
+
+- TypeScript inference
+- Runtime validation
+- Error messages shown to users
+
+```ts
+import { z } from 'zod'
+
+const contactSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Enter a valid email'),
+  topic: z.string().min(1),
+  message: z.string().min(20, 'Add a bit more detail'),
+})
+
+type ContactValues = z.infer<typeof contactSchema>
+```
+
+## Accessible field wiring
+
+Every control needs a visible label, an error linked with `aria-describedby`, and a focus order that matches the visual layout. Dynamic fields should announce additions via `aria-live` when the list changes.
+
+## Multi-step without pain
+
+Lift step state outside the form instance or use separate schemas per step that compose into the full payload on submit. Do not validate the entire wizard on step one.

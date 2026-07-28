@@ -1,0 +1,41 @@
+---
+title: Don't Let Your Backend Control Your Frontend
+description: Patterns for cleaner client–server boundaries, cache-friendly fetching, and predictable UI state when APIs evolve.
+date: 2025-09-03
+tags:
+  - Architecture
+  - Data
+category: Architecture
+image: /writing/data-pipeline.svg
+mediumUrl: ""
+---
+
+APIs evolve. Product UI should not reshuffle every time a field is renamed on the server.
+
+## Own a client model
+
+Map network DTOs into a **UI-facing domain model** at the boundary. Screens consume the domain model only.
+
+```ts
+type UserDto = { user_id: string; full_name: string }
+
+type User = { id: string; name: string }
+
+function toUser(dto: UserDto): User {
+  return { id: dto.user_id, name: dto.full_name }
+}
+```
+
+## Cache with intent
+
+Decide per resource:
+
+- **Immutable** — long TTL, key by id
+- **Session** — invalidate on mutation
+- **Live** — socket or short polling
+
+A single “fetch everything in the page” hook usually fights all three.
+
+## Evolve without breaking UI
+
+Version adapters, not screens. When the backend ships `v2`, add `toUserV2` and keep screens stable. Delete the old adapter when traffic is gone — not the JSX.

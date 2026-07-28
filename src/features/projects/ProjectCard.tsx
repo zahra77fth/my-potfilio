@@ -25,6 +25,7 @@ export function ProjectCard({ project, featured, index, onOpen }: ProjectCardPro
         data-cursor="project"
         onClick={() => onOpen(project)}
         className="project-card__trigger"
+        aria-label={`View project: ${project.name}`}
       >
         <div className="project-card__media">
           <img

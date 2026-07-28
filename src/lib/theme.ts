@@ -1,8 +1,15 @@
-import { SKY_BOOT_GRADIENT, SKY_CANVAS_CLEAR } from '../components/three/sky/skyConfig'
-
 export type Theme = 'light' | 'dark'
 
 export const THEME_STORAGE_KEY = 'portfolio-theme'
+
+/**
+ * Light-mode sky boot colors — owned here so `lib` does not depend on Three/UI.
+ * Keep in sync with `components/three/sky/skyConfig` palette.
+ */
+export const SKY_CANVAS_CLEAR = '#7aacd0'
+
+export const SKY_BOOT_GRADIENT =
+  'linear-gradient(180deg, #4a6d94 0%, #6d9ec4 40%, #a8cce6 74%, #edf4fa 100%)'
 
 /** WebGL clear color — matches scene fog / backdrop. */
 export const THEME_CANVAS_CLEAR: Record<Theme, string> = {

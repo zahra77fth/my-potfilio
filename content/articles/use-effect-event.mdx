@@ -1,0 +1,36 @@
+---
+title: useEffectEvent and the Next Generation of React Effects
+description: How upcoming effect APIs reduce stale closures and make event-driven side effects easier to reason about.
+date: 2025-04-02
+tags:
+  - React
+  - Hooks
+category: React
+image: /writing/useeffect-event.svg
+mediumUrl: ""
+---
+
+Effects that both **subscribe** and **react to events** are where stale closures hide.
+
+## Split “subscribe” from “respond”
+
+Subscribe once to a store, socket, or media query. Respond to events with a handler that always sees fresh props/state — without re-subscribing on every render.
+
+```tsx
+useEffect(() => {
+  const onFrame = (time: number) => {
+    // reads latest values via effect-event pattern
+    draw(time, latestTheme)
+  }
+  const id = requestAnimationFrame(onFrame)
+  return () => cancelAnimationFrame(id)
+}, [])
+```
+
+## When not to use an effect
+
+If you are syncing props to state “just in case,” you probably want a key remount or derived render. Effects are for **external systems**, not for mirroring React state.
+
+## Migration tip
+
+Audit effects that list volatile values in the dependency array solely to refresh a callback. Those are the first candidates for the newer event APIs.

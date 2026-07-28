@@ -1,10 +1,10 @@
-/**
- * Light-mode sky + UI harmony — CSS boot, WebGL clear, and shader stay in sync.
- */
-export const SKY_BOOT_GRADIENT =
-  'linear-gradient(180deg, #4a6d94 0%, #6d9ec4 40%, #a8cce6 74%, #edf4fa 100%)'
+import { SKY_CANVAS_CLEAR } from '../../../lib/theme'
 
-export const SKY_CANVAS_CLEAR = '#7aacd0'
+/**
+ * Light-mode sky mesh/shader palette.
+ * Boot gradient + WebGL clear live in `lib/theme` (shared with CSS FOUC path).
+ */
+export { SKY_BOOT_GRADIENT, SKY_CANVAS_CLEAR } from '../../../lib/theme'
 
 export const SKY_PALETTE = {
   zenith: '#4a6d94',
@@ -17,6 +17,8 @@ export const SKY_PALETTE = {
   cloudShadow: '#b0c9de',
   bird: '#2a4460',
   sparkle: '#f5faff',
+  /** Alias for clear — keeps mesh code reading one config module */
+  clear: SKY_CANVAS_CLEAR,
 } as const
 
 /** RGB 0–1 for SkyBackdrop shader */

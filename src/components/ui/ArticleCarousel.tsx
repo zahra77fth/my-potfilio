@@ -1,15 +1,75 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import type { ArticleItem } from '../../types'
 import { fadeUp, staggerContainer, viewportOnce, hoverLift, tapScale } from '../../lib/motion'
 
 function ArticleCard({ article }: { article: ArticleItem }) {
   const reduceMotion = useReducedMotion()
-  const hasUrl = article.url.trim().length > 0
-  const Wrapper = hasUrl ? 'a' : 'article'
-  const linkProps = hasUrl
-    ? { href: article.url, target: '_blank', rel: 'noopener noreferrer' }
-    : {}
+  const internalHref = article.slug ? `/writing/${article.slug}` : null
+  const externalHref = article.url.trim() || null
+  const isLinked = Boolean(internalHref || externalHref)
+
+  let body: ReactNode
+  const inner = (
+    <>
+      <div className="article-card__media">
+        <img
+          src={article.image}
+          alt=""
+          width={640}
+          height={400}
+          className="article-card__img"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="article-card__overlay" aria-hidden />
+        <div className="article-card__shine" aria-hidden />
+        {article.readTime && <span className="article-card__badge">{article.readTime}</span>}
+      </div>
+      <div className="article-card__body">
+        <div className="flex flex-wrap gap-1.5">
+          {article.tags.map((tag) => (
+            <span key={tag} className="article-card__tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h3 className="article-card__title font-display">{article.title}</h3>
+        <p className="article-card__excerpt">{article.excerpt}</p>
+        {isLinked && (
+          <span className="article-card__cta">
+            Read article
+            <span className="article-card__arrow" aria-hidden>
+              →
+            </span>
+          </span>
+        )}
+      </div>
+    </>
+  )
+
+  if (internalHref) {
+    body = (
+      <Link to={internalHref} data-cursor="link" className="article-card group block h-full cursor-pointer">
+        {inner}
+      </Link>
+    )
+  } else if (externalHref) {
+    body = (
+      <a
+        href={externalHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cursor="link"
+        className="article-card group block h-full cursor-pointer"
+      >
+        {inner}
+      </a>
+    )
+  } else {
+    body = <article className="article-card group block h-full">{inner}</article>
+  }
 
   return (
     <motion.div
@@ -18,46 +78,7 @@ function ArticleCard({ article }: { article: ArticleItem }) {
       whileHover={reduceMotion ? undefined : hoverLift}
       whileTap={reduceMotion ? undefined : tapScale}
     >
-      <Wrapper
-        {...linkProps}
-        className={`article-card group block h-full ${hasUrl ? 'cursor-pointer' : ''}`}
-      >
-        <div className="article-card__media">
-          <img
-            src={article.image}
-            alt=""
-            width={640}
-            height={400}
-            className="article-card__img"
-            loading="lazy"
-            decoding="async"
-          />
-          <div className="article-card__overlay" aria-hidden />
-          <div className="article-card__shine" aria-hidden />
-          {article.readTime && (
-            <span className="article-card__badge">{article.readTime}</span>
-          )}
-        </div>
-        <div className="article-card__body">
-          <div className="flex flex-wrap gap-1.5">
-            {article.tags.map((tag) => (
-              <span key={tag} className="article-card__tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-          <h3 className="article-card__title font-display">{article.title}</h3>
-          <p className="article-card__excerpt">{article.excerpt}</p>
-          {hasUrl && (
-            <span className="article-card__cta">
-              Read article
-              <span className="article-card__arrow" aria-hidden>
-                →
-              </span>
-            </span>
-          )}
-        </div>
-      </Wrapper>
+      {body}
     </motion.div>
   )
 }

@@ -1,140 +1,111 @@
 # Portfolio Pro
 
-A modern, performance-minded developer portfolio for **Zahra Fattahi** — built with React 19, TypeScript, Tailwind CSS 4, and immersive 3D backgrounds. Content lives in JSON so you can update copy, projects, and experience without touching component code.
+Staff-oriented frontend portfolio for **Zahra Fattahi** — React 19, TypeScript, Vite 8, Tailwind CSS 4, React Three Fiber.
 
-[![Live demo](https://img.shields.io/badge/demo-GitHub Pages-0ea5e9?style=flat-square)](https://github.com/zahra77fth/portfolio)
-[![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react&logoColor=white)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Vite](https://img.shields.io/badge/Vite-8-646cff?style=flat-square&logo=vite&logoColor=white)](https://vite.dev)
+This repository is maintained like a production frontend codebase: explicit architecture, measurable performance choices, accessibility in the critical dialogs, and content that non-engineers can edit.
 
-## Highlights
+## Why these choices
 
-- **JSON-driven content** — Profile, skills, experience, projects, education, testimonials, and site metadata in `src/data/`
-- **Immersive backgrounds** — Light-mode sky (clouds, birds, kite) and dark-mode galaxy via React Three Fiber
-- **Polished sections** — Hero, selected-work rail, About, Skills, Experience, Projects (modal details), Education, Writing, Contact
-- **Motion & accessibility** — Framer Motion with `prefers-reduced-motion` respect; lazy-loaded below-the-fold sections
-- **Theme system** — Light/dark mode with persisted preference and design tokens
-- **SPA-ready** — React Router, hash anchors, and Vercel rewrites for clean URLs
+| Choice | Trade-off |
+|--------|-----------|
+| Vite SPA | Simple deploy, great DX; no SSR — mitigate with solid `index.html` defaults + client SEO head |
+| JSON in `src/data/` | Fast content edits for structured data; Zod-validated at load; long-form articles stay MDX (next) |
+| Deferred R3F sky/galaxy | Brand atmosphere without blocking first paint (~33 KB entry vs ~1 MB when eager) |
+| Framer + CSS `Reveal` | Rich chrome motion; cheap below-fold reveals |
+| Thin design tokens | Consistency without an unused component library |
+| No drei | Local `FatLine` / ortho camera instead of a heavy helper package for two call sites |
 
-## Tech stack
-
-| Layer | Tools |
-|--------|--------|
-| Build | [Vite](https://vite.dev) 8, TypeScript |
-| UI | [React](https://react.dev) 19, [Tailwind CSS](https://tailwindcss.com) 4 |
-| Motion | [Framer Motion](https://www.framer.com/motion) |
-| 3D | [Three.js](https://threejs.org), [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber), [@react-three/drei](https://github.com/pmndrs/drei) |
-| Routing | [React Router](https://reactrouter.com) 7 |
+Deep rationale: [docs/design-decisions.md](./docs/design-decisions.md) · principles: [docs/engineering-principles.md](./docs/engineering-principles.md).
 
 ## Quick start
 
 ```bash
-git clone https://github.com/zahra77fth/portfolio.git
-cd portfolio
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
-
-### Scripts
-
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | Typecheck and production build → `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | Run ESLint |
+| `npm run dev` | Vite HMR |
+| `npm run build` | `tsc -b` + production bundle |
+| `npm run preview` | Serve `dist/` |
+| `npm run lint` | ESLint |
+| `npm run validate:content` | Zod-validate `src/data/*.json` |
 
-## Customize content
+Optional: copy `.env.example` → `.env` and set `VITE_SITE_URL` for absolute SEO URLs.
 
-Edit the JSON files under `src/data/` — the dev server hot-reloads on save.
-
-| File | What to change |
-|------|----------------|
-| `site.json` | Name, title, email, social links, navigation, SEO |
-| `profile.json` | Hero copy, about text, stats, avatar path |
-| `skills.json` | Skill categories and items |
-| `experience.json` | Roles, companies, highlights |
-| `projects.json` | Titles, tags, thumbnails; leave `github` or `live` empty to hide links |
-| `education.json` | Degrees and certifications |
-| `testimonials.json` | Quotes and attributions |
-| `contact.json` | Contact page copy and FAQ |
-
-**Assets:** Replace images in `public/` (avatar, project thumbs, OG image). Add a résumé at `public/resume.pdf` and point `resumeUrl` in `site.json` if needed.
-
-Only non-empty URLs render as links — useful when a project has no public repo yet.
-
-## Project structure
+## Architecture (30 seconds)
 
 ```
-src/
-  app/              App shell, providers, routing
-  features/         Home, contact, layout, project UI
-  components/       Shared UI, 3D sky/galaxy, effects (cursor)
-  data/             Portfolio JSON (source of truth)
-  design-system/    Tokens and theme variables
-  hooks/            Reusable React hooks
-  lib/              Data loading helpers
-  types/            TypeScript contracts
+app/        → shell + routes
+features/   → home, contact, layout, projects
+components/ → shared UI, three, seo, a11y, motion
+data/       → JSON source of truth
+lib/        → loadData, theme, seo, motion (no React UI)
 ```
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for performance conventions (lazy sections, build-time JSON, reduced motion).
+**Dependency rule:** `app` → `features` → `components`/`hooks`/`context` → `lib`/`types`/`data`.  
+`lib` never imports `components`.
 
-## Git workflow
+Full map: [docs/architecture.md](./docs/architecture.md) · folders: [docs/folder-structure.md](./docs/folder-structure.md).
 
-Branching and commit conventions: [docs/GIT_WORKFLOW.md](./docs/GIT_WORKFLOW.md).
+## Performance posture
 
-- `main` — production / deploy
-- `develop` — integration; branch features from here
+- CSS gradient paints first; WebGL mounts after idle
+- Skips WebGL for reduced motion / reduced data
+- Pauses canvas when the tab is hidden
+- Lazy routes, lazy sections, vendor chunks; `r3f` is not modulepreloaded
 
-## Publish to GitHub (no Homebrew)
+Details and how to verify: [docs/performance.md](./docs/performance.md).
 
-GitHub CLI is bundled under `.tools/`. From the project root:
+## Content
 
-```bash
-./scripts/publish-to-github.sh
-```
+Edit `src/data/*.json` — no component changes required for copy/projects/experience.
 
-The script runs `gh auth login` if needed, then creates `portfolio-pro` on your account and pushes `main`. Or use the website: [create a new repo](https://github.com/new) (empty, no README), then:
+| File | Use |
+|------|-----|
+| `site.json` | Identity, nav, SEO (`domain`, `ogImage`) |
+| `profile.json` | Hero + about |
+| `skills.json` / `experience.json` / `projects.json` / `education.json` | Sections |
+| `writing.json` | Homepage Writing section title/subtitle only — article bodies live in `content/articles/*.mdx` |
+| `contact.json` | Contact page |
 
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/portfolio-pro.git
-git push -u origin main
-```
+Empty `live` / `github` / article `url` strings hide links.  
+Guide: [docs/content-system.md](./docs/content-system.md).
 
-## Deploy
+## SEO & a11y (shipped)
 
-### Vercel (recommended)
+- Per-route title/description/canonical/OG/Twitter/JSON-LD (`DocumentHead`)
+- Build-time `robots.txt` + `sitemap.xml` (`vite.seo-plugin`)
+- Focus trap + restore on mobile menu and project modal
+- Focus moves to `#main` on client navigations
+- Footer documents `P` (projects) / `R` (résumé) shortcuts
 
-```bash
-npm run build
-npx vercel
-```
+Set `site.domain` or `VITE_SITE_URL` before production deploys.
 
-`vercel.json` rewrites all routes to `index.html` for client-side routing.
+## How to extend
 
-**Build settings:** Build command `npm run build`, output directory `dist`.
+| Goal | Do this |
+|------|---------|
+| New article | Add `content/articles/<slug>.mdx` — see [docs/articles.md](./docs/articles.md) |
+| New home section | Lazy section under `features/home/sections` + import from `HomePage` |
+| New route | Feature folder + lazy route in `app/App.tsx` + SEO path in `lib/seo.ts` + sitemap entry in `vite.seo-plugin.ts` |
+| New shared control | `components/ui` only if reused; else keep local to the feature |
+| Theme/canvas color | `lib/theme` (not inside Three modules) |
 
-### Other hosts
+## Documentation index
 
-Any static host works: run `npm run build` and publish the `dist` folder. Configure SPA fallback to `index.html` for `/contact` and deep links.
+[docs/README.md](./docs/README.md)
 
-## Contact form
+## Git & deploy
 
-The contact UI is front-end only in development (submissions log to the console). Wire it to [Formspree](https://formspree.io), Netlify Forms, or your API before going live.
-
-## Lighthouse
-
-```bash
-npm run build && npm run preview
-```
-
-Run Lighthouse in Chrome DevTools (Incognito). For top scores: compress images (WebP/AVIF), limit third-party scripts, and connect a real form backend.
+- Workflow: [docs/GIT_WORKFLOW.md](./docs/GIT_WORKFLOW.md)
+- Vercel: `npm run build`, output `dist/`; `vercel.json` SPA rewrites skip static SEO files
+- Publish helper: `./scripts/publish-to-github.sh`
 
 ## Author
 
-**Zahra Fattahi** — Frontend developer (React, Next.js, design systems, performance)
+**Zahra Fattahi** — Frontend engineer (React, Next.js, design systems, performance)
 
 - GitHub: [@zahra-hsb](https://github.com/zahra-hsb)
 - LinkedIn: [Zahra HB](https://www.linkedin.com/in/zahra-hb-713760241/)
@@ -142,4 +113,4 @@ Run Lighthouse in Chrome DevTools (Incognito). For top scores: compress images (
 
 ## License
 
-MIT — free to use for personal and commercial portfolios. Attribution appreciated but not required.
+MIT

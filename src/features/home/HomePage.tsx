@@ -12,7 +12,7 @@ const Skills = lazy(() => import('./sections/Skills').then((m) => ({ default: m.
 const Experience = lazy(() => import('./sections/Experience').then((m) => ({ default: m.Experience })))
 const Projects = lazy(() => import('./sections/Projects').then((m) => ({ default: m.Projects })))
 const Education = lazy(() => import('./sections/Education').then((m) => ({ default: m.Education })))
-const Testimonials = lazy(() => import('./sections/Testimonials').then((m) => ({ default: m.Testimonials })))
+const Writing = lazy(() => import('./sections/Writing').then((m) => ({ default: m.Writing })))
 const ContactCTA = lazy(() => import('./sections/ContactCTA').then((m) => ({ default: m.ContactCTA })))
 
 export function HomePage() {
@@ -45,7 +45,7 @@ export function HomePage() {
       </Suspense>
       <SectionBridge label="Writing" />
       <Suspense fallback={<SectionSkeleton />}>
-        <Testimonials />
+        <Writing />
       </Suspense>
       <SectionBridge label="Contact" />
       <Suspense fallback={<PageFallback />}>
@@ -54,3 +54,4 @@ export function HomePage() {
     </div>
   )
 }
+

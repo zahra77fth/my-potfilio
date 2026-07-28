@@ -1,8 +1,9 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../../components/ui/Button'
 import { cn } from '../../design-system'
+import { useFocusTrap } from '../../hooks/useFocusTrap'
 
 interface NavItem {
   label: string
@@ -19,6 +20,10 @@ interface MobileMenuProps {
 export function MobileMenu({ open, onClose, items, isActive }: MobileMenuProps) {
   const location = useLocation()
   const reduceMotion = useReducedMotion()
+  const panelRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  useFocusTrap({ enabled: open, containerRef: panelRef, initialFocusRef: closeRef })
 
   useEffect(() => {
     if (open) onClose()
@@ -51,6 +56,7 @@ export function MobileMenu({ open, onClose, items, isActive }: MobileMenuProps) 
             type="button"
             className="mobile-menu__backdrop lg:hidden"
             aria-label="Close menu"
+            tabIndex={-1}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -59,11 +65,13 @@ export function MobileMenu({ open, onClose, items, isActive }: MobileMenuProps) 
           />
 
           <motion.div
+            ref={panelRef}
             className="mobile-menu__panel lg:hidden"
             id="mobile-navigation"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
+            tabIndex={-1}
             initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12, scale: 0.98 }}
             animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.99 }}
@@ -72,6 +80,7 @@ export function MobileMenu({ open, onClose, items, isActive }: MobileMenuProps) 
             <div className="mobile-menu__header">
               <p className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-muted">Menu</p>
               <button
+                ref={closeRef}
                 type="button"
                 className="mobile-menu__close"
                 onClick={onClose}

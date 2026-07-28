@@ -1,7 +1,7 @@
-import { Line } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useMemo, useRef } from 'react'
 import * as THREE from 'three'
+import { FatLine } from '../primitives/FatLine'
 import { skyInteraction } from './skyInteraction'
 
 const LIGHT_GREEN = '#8bc34a'
@@ -85,8 +85,8 @@ function WavyRibbon({
 
   return (
     <>
-      <Line points={points} color={colors[0]} lineWidth={2.8} {...KITE_LINE_PROPS} />
-      <Line
+      <FatLine points={points} color={colors[0]} lineWidth={2.8} {...KITE_LINE_PROPS} />
+      <FatLine
         points={points.map((p, i) => p.clone().add(new THREE.Vector3(0, -0.07 - i * 0.005, 0)))}
         color={colors[1]}
         lineWidth={2.8}
@@ -222,7 +222,7 @@ export function Kite() {
 
   return (
     <group ref={root} renderOrder={KITE_RENDER_ORDER}>
-      <Line
+      <FatLine
         points={stringPoints}
         color="#546e7a"
         lineWidth={1.4}
@@ -249,14 +249,14 @@ export function Kite() {
         </mesh>
 
         {frameLines.map((pair, i) => (
-          <Line key={i} points={pair} color={FRAME} lineWidth={2.2} {...KITE_LINE_PROPS} />
+          <FatLine key={i} points={pair} color={FRAME} lineWidth={2.2} {...KITE_LINE_PROPS} />
         ))}
 
         <WavyRibbon side="left" colors={['#ec407a', '#42a5f5']} />
         <WavyRibbon side="right" colors={['#ffca28', '#42a5f5']} />
 
         <group ref={tailRef}>
-          <Line points={tailPoints} color={TAIL_GREEN} lineWidth={2.6} {...KITE_LINE_PROPS} />
+          <FatLine points={tailPoints} color={TAIL_GREEN} lineWidth={2.6} {...KITE_LINE_PROPS} />
           {bowYs.map((y, i) => (
             <Bow key={i} color={bowColors[i] ?? '#ec407a'} y={y} />
           ))}

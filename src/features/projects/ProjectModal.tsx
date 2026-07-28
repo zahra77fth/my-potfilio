@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import type { ProjectItem } from '../../types'
 import { Button } from '../../components/ui/Button'
+import { useFocusTrap } from '../../hooks/useFocusTrap'
 
 interface ProjectModalProps {
   project: ProjectItem | null
@@ -10,14 +11,17 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, index, onClose }: ProjectModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
+  const open = project != null
+
+  useFocusTrap({ enabled: open, containerRef: panelRef, initialFocusRef: closeRef })
 
   useEffect(() => {
     if (!project) return
 
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    closeRef.current?.focus()
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -36,21 +40,24 @@ export function ProjectModal({ project, index, onClose }: ProjectModalProps) {
   const hasGithub = project.links.github.trim() !== ''
 
   return createPortal(
-    <div
-      className="project-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="project-modal-title"
-    >
+    <div className="project-modal">
       <button
         type="button"
         className="project-modal__backdrop"
         aria-label="Close project details"
         data-cursor="close"
+        tabIndex={-1}
         onClick={onClose}
       />
 
-      <div className="project-modal__panel">
+      <div
+        ref={panelRef}
+        className="project-modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        tabIndex={-1}
+      >
         <div className="project-modal__accent" aria-hidden />
 
         <header className="project-modal__toolbar">
