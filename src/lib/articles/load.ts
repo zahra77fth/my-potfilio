@@ -15,6 +15,14 @@ const componentModules = import.meta.glob('../../../content/articles/*.mdx') as 
 
 function asFrontmatter(data: Record<string, unknown>): ArticleFrontmatter {
   // Shape enforced by `npm run validate:content` — keep client free of Zod.
+  const difficultyRaw = data.difficulty ? String(data.difficulty) : undefined
+  const difficulty =
+    difficultyRaw === 'Beginner' ||
+    difficultyRaw === 'Intermediate' ||
+    difficultyRaw === 'Advanced'
+      ? difficultyRaw
+      : undefined
+
   return {
     title: String(data.title ?? ''),
     description: String(data.description ?? ''),
@@ -25,6 +33,10 @@ function asFrontmatter(data: Record<string, unknown>): ArticleFrontmatter {
     image: String(data.image ?? ''),
     draft: Boolean(data.draft),
     mediumUrl: data.mediumUrl ? String(data.mediumUrl) : undefined,
+    difficulty,
+    featured: Boolean(data.featured),
+    popular: Boolean(data.popular),
+    eyebrow: data.eyebrow ? String(data.eyebrow) : undefined,
   }
 }
 

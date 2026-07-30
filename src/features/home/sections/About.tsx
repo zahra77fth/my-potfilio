@@ -4,6 +4,7 @@ import { Reveal } from '../../../components/motion/Reveal'
 import { Button } from '../../../components/ui/Button'
 import { Section } from '../../../components/ui/Section'
 import { cn } from '../../../design-system'
+import { richText } from '../../../lib/richText'
 
 export function About() {
   const { profile, site } = usePortfolio()
@@ -112,7 +113,7 @@ export function About() {
               <Reveal delay={40}>
                 <div className="about-section__block">
                   <h3 className="about-section__label">Summary</h3>
-                  <p className="about-lead">{about.paragraphs[0]}</p>
+                  <p className="about-lead">{richText(about.paragraphs[0])}</p>
                 </div>
               </Reveal>
             )}
@@ -121,7 +122,7 @@ export function About() {
               <div className="about-copy">
                 {about.paragraphs.slice(1).map((paragraph, i) => (
                   <Reveal key={paragraph.slice(0, 48)} delay={70 + i * 45}>
-                    <p>{paragraph}</p>
+                    <p>{richText(paragraph)}</p>
                   </Reveal>
                 ))}
               </div>
@@ -142,7 +143,14 @@ export function About() {
 
         <Reveal delay={90}>
           <div className="about-section__footer">
-            <h3 className="about-section__label">Career highlights</h3>
+            <div className="about-section__footer-head">
+              <div>
+                <h3 className="about-section__label">Career highlights</h3>
+                <p className="about-section__footer-note">
+                  Outcomes from shipping production frontend across product domains
+                </p>
+              </div>
+            </div>
             <ul className="about-metrics" aria-label="Career highlights">
               {about.highlights.map((highlight, i) => (
                 <li
@@ -150,6 +158,9 @@ export function About() {
                   className={cn('about-metrics__item', i === 0 && 'about-metrics__item--featured')}
                 >
                   <article className="about-metric">
+                    <span className="about-metric__index" aria-hidden>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
                     <p className="about-metric__value">{highlight.value}</p>
                     <p className="about-metric__label">{highlight.label}</p>
                   </article>

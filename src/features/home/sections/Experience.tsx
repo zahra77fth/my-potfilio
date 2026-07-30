@@ -3,6 +3,7 @@ import { usePortfolio } from '../../../context/PortfolioContext'
 import { Reveal } from '../../../components/motion/Reveal'
 import { Section } from '../../../components/ui/Section'
 import { cn } from '../../../design-system'
+import { richText } from '../../../lib/richText'
 
 function parseLocation(location: string) {
   const parts = location.split('·').map((s) => s.trim())
@@ -111,14 +112,14 @@ export function Experience() {
                       </p>
                     </header>
 
-                    <p className="experience-entry__summary">{item.description}</p>
+                    <p className="experience-entry__summary">{richText(item.description)}</p>
 
                     {item.achievements.length > 0 ? (
                       <ul className="experience-entry__highlights">
                         {item.achievements.map((achievement) => (
                           <li key={achievement} className="experience-entry__highlight">
                             <span className="experience-entry__bullet" aria-hidden />
-                            <span>{achievement}</span>
+                            <span>{richText(achievement)}</span>
                           </li>
                         ))}
                       </ul>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Zahra Fattahi — Frontend Developer Resume</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm 14mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #1a2330;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 9.5pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      strong {
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      a {
+        color: #1d4f7c;
+        text-decoration: none;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: flex-end;
+        border-bottom: 2.5px solid #1d4f7c;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 24pt;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: #0f172a;
+      }
+
+      .title {
+        margin: 4px 0 0;
+        font-size: 11pt;
+        font-weight: 600;
+        color: #1d4f7c;
+      }
+
+      .contact {
+        text-align: right;
+        font-size: 8.5pt;
+        line-height: 1.55;
+        color: #334155;
+      }
+
+      h2 {
+        margin: 14px 0 6px;
+        font-size: 10pt;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #1d4f7c;
+        border-bottom: 1px solid #c5d7e8;
+        padding-bottom: 3px;
+      }
+
+      .summary {
+        margin: 0;
+        color: #243447;
+      }
+
+      .job {
+        margin: 0 0 10px;
+        page-break-inside: avoid;
+      }
+
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+      }
+
+      .job-role {
+        margin: 0;
+        font-size: 10.5pt;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .job-meta {
+        margin: 1px 0 4px;
+        font-size: 8.75pt;
+        color: #475569;
+      }
+
+      .job-period {
+        white-space: nowrap;
+        font-size: 8.5pt;
+        font-weight: 600;
+        color: #334155;
+      }
+
+      .job-desc {
+        margin: 0 0 4px;
+        color: #334155;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 16px;
+      }
+
+      li {
+        margin: 0 0 2.5px;
+        color: #334155;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: 118px 1fr;
+        gap: 3px 10px;
+        margin: 0;
+      }
+
+      .skills dt {
+        margin: 0;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .skills dd {
+        margin: 0;
+        color: #334155;
+      }
+
+      .edu-row,
+      .lang-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 0 0 3px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+      }
+
+      .muted {
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <h1 class="name">Zahra Fattahi</h1>
+        <p class="title">Frontend Developer</p>
+      </div>
+      <div class="contact">
+        <div><a href="mailto:zafth98@gmail.com">zafth98@gmail.com</a></div>
+        <div>+98 912 014 1339</div>
+        <div>Tehran · Open to Netherlands &amp; remote</div>
+        <div>
+          <a href="https://www.linkedin.com/in/zahra-hb-713760241/">LinkedIn</a>
+          ·
+          <a href="https://github.com/zahra-hsb">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <h2>Summary</h2>
+    <p class="summary">
+      Frontend engineer with <strong>six years</strong> shipping <strong>React</strong> and
+      <strong>Next.js</strong> products across <strong>fintech</strong>, <strong>healthcare</strong>, and
+      consumer platforms. Owns <strong>architecture</strong>, <strong>design systems</strong>, and
+      legacy modernization. Most recently leading <strong>Tapsi Doctor</strong> web (ODoc, OMS,
+      Physician Panel, VMS) on <strong>Next.js 15 App Router</strong>, <strong>TypeScript</strong>, and
+      <strong>Tailwind</strong> — <strong>SSR/SSG</strong> and bundle splitting cut load times by
+      <strong>~40%</strong>. Technical writer on React internals, performance, and the React 19 compiler.
+    </p>
+
+    <h2>Work Experience</h2>
+
+    <article class="job">
+      <div class="job-head">
+        <h3 class="job-role">Frontend Developer</h3>
+        <span class="job-period">Feb 2025 — Present</span>
+      </div>
+      <p class="job-meta"><strong>Tapsi Doctor</strong> · Healthcare platform · Tehran</p>
+      <p class="job-desc">
+        Lead frontend across <strong>ODoc</strong> (medicine ordering &amp; consultation),
+        <strong>OMS</strong> (order panel), <strong>Physician Panel</strong> (doctor panel), and
+        <strong>VMS</strong> — shared <strong>Next.js 15</strong> / <strong>React 18</strong> /
+        <strong>TypeScript</strong> platform with ownership of <strong>performance</strong>,
+        <strong>SEO</strong>, and <strong>accessibility</strong>.
+      </p>
+      <ul>
+        <li>
+          Defined shared <strong>Next.js 15 App Router</strong> architecture (route groups,
+          server/client boundaries, <strong>design system</strong>) powering ODoc, OMS, Physician Panel, and VMS
+        </li>
+        <li>
+          Migrated legacy <strong>Pages Router</strong> to <strong>App Router</strong> with
+          <strong>SSR/SSG</strong> and route-level <strong>code splitting</strong> —
+          <strong>~40% faster</strong> initial loads
+        </li>
+        <li>
+          Built design-system layer with <strong>Tailwind CSS</strong> and <strong>Headless UI</strong> —
+          accessibility-checked, reused across product surfaces
+        </li>
+        <li>
+          Integrated <strong>Socket.IO</strong> for real-time order/visit status and patient–doctor chat;
+          set <strong>Zustand</strong>, forms, validation, and error-boundary conventions
+        </li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3 class="job-role">Frontend Developer (Independent contracts)</h3>
+        <span class="job-period">May 2024 — Jan 2025</span>
+      </div>
+      <p class="job-meta"><strong>Pool Khord · Hitobit · Cheetavel</strong> · Remote</p>
+      <p class="job-desc">
+        Delivered three client products with shared patterns:
+        <strong>Atomic Design</strong>, <strong>Zustand/Recoil</strong>,
+        <strong>React Hook Form</strong>, <strong>Socket.IO</strong>, <strong>shadcn/ui</strong>.
+      </p>
+      <ul>
+        <li>
+          <strong>Pool Khord</strong>: UI across <strong>React Native</strong>, <strong>React</strong>, and
+          <strong>Next.js</strong> with responsive <strong>Tailwind</strong> layouts
+        </li>
+        <li>
+          <strong>Hitobit</strong>: front-end <strong>architecture</strong> focused on
+          <strong>performance</strong> and responsiveness
+        </li>
+        <li>
+          <strong>Cheetavel</strong>: foundational <strong>Next.js 15 App Router</strong> architecture for
+          scalability
+        </li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3 class="job-role">Frontend Developer</h3>
+        <span class="job-period">Jan 2022 — Apr 2024</span>
+      </div>
+      <p class="job-meta"><strong>Nobitex</strong> · Largest cryptocurrency exchange in Iran · Tehran</p>
+      <p class="job-desc">
+        Shipped trading and account features on a high-volume exchange, partnering closely with design and product.
+      </p>
+      <ul>
+        <li>
+          Built <strong>real-time</strong> market UIs with <strong>Socket.IO</strong> — order books, tickers,
+          notifications under heavy throughput
+        </li>
+        <li>
+          Introduced <strong>shadcn/ui</strong> as the shared <strong>component library</strong>, replacing
+          inconsistent ad-hoc UI
+        </li>
+        <li>
+          Optimized rendering, <strong>bundle size</strong>, and asset loading —
+          <strong>~25%</strong> faster page loads; design-pattern refactor —
+          <strong>~35%</strong> maintainability gain
+        </li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3 class="job-role">Frontend Developer</h3>
+        <span class="job-period">Jun 2020 — Jan 2022</span>
+      </div>
+      <p class="job-meta"><strong>Axon</strong> · Tehran</p>
+      <ul>
+        <li>
+          Built responsive apps with <strong>React</strong> / <strong>Redux</strong>; owned landing and CMS
+          surfaces with <strong>SEO</strong> partners
+        </li>
+        <li>
+          Applied <strong>BEM</strong> for modular CSS — <strong>~20%</strong> faster delivery, fewer style regressions
+        </li>
+        <li>Shipped UI with <strong>Tailwind CSS</strong>, Bootstrap, and Vuetify</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3 class="job-role">Frontend Developer (Intern)</h3>
+        <span class="job-period">Jan 2020 — May 2020</span>
+      </div>
+      <p class="job-meta"><strong>Over Clock</strong> · Tehran</p>
+      <ul>
+        <li>Grew a frontend community through meetups and forums; shipped production UI with Tailwind, Bootstrap, Vuetify</li>
+      </ul>
+    </article>
+
+    <div class="two-col">
+      <div>
+        <h2>Skills</h2>
+        <dl class="skills">
+          <dt>Languages</dt>
+          <dd><strong>TypeScript</strong>, JavaScript, HTML5, CSS3, Python (basic)</dd>
+          <dt>Frameworks</dt>
+          <dd>
+            <strong>React</strong>, <strong>Next.js (App Router, Server Components)</strong>,
+            <strong>React Native</strong>, Vue, Nuxt
+          </dd>
+          <dt>State &amp; data</dt>
+          <dd>
+            <strong>Zustand</strong>, Redux, Recoil, React Query, <strong>React Hook Form</strong>,
+            React Router
+          </dd>
+          <dt>Design systems</dt>
+          <dd>
+            <strong>Tailwind CSS</strong>, <strong>shadcn/ui</strong>, Headless UI, Storybook, Bootstrap,
+            Vuetify, BEM
+          </dd>
+          <dt>Testing</dt>
+          <dd>Vitest, Jest, React Testing Library, Playwright</dd>
+          <dt>CI / Deploy</dt>
+          <dd>GitHub Actions, Vercel, Docker (basic), preview environments</dd>
+          <dt>Real-time</dt>
+          <dd><strong>Socket.IO</strong>, Prisma ORM, REST APIs</dd>
+          <dt>i18n</dt>
+          <dd>next-intl, react-i18next, RTL/LTR layouts</dd>
+          <dt>Architecture</dt>
+          <dd>
+            <strong>Atomic Design</strong>, <strong>SSR / SSG</strong>, component design systems,
+            <strong>performance</strong>, <strong>accessibility (WCAG AA)</strong>
+          </dd>
+          <dt>Workflow</dt>
+          <dd>Git, Agile/Scrum, Figma, Chrome DevTools, Lighthouse, Web Vitals</dd>
+        </dl>
+      </div>
+      <div>
+        <h2>Education</h2>
+        <div class="edu-row">
+          <span><strong>M.S. in Computer Science</strong></span>
+          <span class="muted">Mar 2022 — Present</span>
+        </div>
+        <div class="edu-row">
+          <span><strong>B.S. in Computer Science</strong></span>
+          <span class="muted">Aug 2017 — Aug 2021</span>
+        </div>
+
+        <h2>Languages</h2>
+        <div class="lang-row"><span>Persian</span><span class="muted">Native</span></div>
+        <div class="lang-row"><span>English</span><span class="muted">Professional</span></div>
+        <div class="lang-row"><span>Turkish</span><span class="muted">Professional</span></div>
+        <div class="lang-row"><span>Dutch</span><span class="muted">A2</span></div>
+
+        <h2>Writing</h2>
+        <ul>
+          <li>Deep Dive into <strong>React 19 Compiler</strong>, useEvent &amp; Performance</li>
+          <li><strong>useEffectEvent</strong>: From A to Z</li>
+          <li>Unified Frontend <strong>Data Pipeline</strong></li>
+          <li>Dynamic Forms with <strong>React Hook Form</strong> + TypeScript</li>
+          <li>React.js Fundamentals — Composition</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

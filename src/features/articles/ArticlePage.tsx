@@ -77,18 +77,28 @@ export function ArticlePage() {
 
             <header className="article-hero">
               <div className="article-hero__meta">
+                {article.featured ? (
+                  <span className="knowledge-badge knowledge-badge--editor">Editor&apos;s pick</span>
+                ) : null}
+                {article.eyebrow ? <span className="article-hero__eyebrow">{article.eyebrow}</span> : null}
                 <span>{article.category}</span>
                 <span aria-hidden>·</span>
                 <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
                 <span aria-hidden>·</span>
                 <span>{article.readingTime}</span>
+                {article.difficulty ? (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span>{article.difficulty}</span>
+                  </>
+                ) : null}
               </div>
               <h1 className="article-hero__title font-display">{article.title}</h1>
               <p className="article-hero__desc">{article.description}</p>
               <ul className="article-hero__tags" aria-label="Tags">
                 {article.tags.map((tag) => (
                   <li key={tag}>
-                    <span className="writing-card__tag">{tag}</span>
+                    <span className="knowledge-card__tag">{tag}</span>
                   </li>
                 ))}
               </ul>

@@ -1,4 +1,5 @@
 export type {
+  ArticleDifficulty,
   ArticleFrontmatter,
   ArticleHeading,
   ArticleMeta,

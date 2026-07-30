@@ -11,6 +11,7 @@ import { SplitHeadline } from '../../components/motion/SplitHeadline'
 import { TiltCard } from '../../components/ui/TiltCard'
 import { Parallax } from '../../components/effects/Parallax'
 import { useTheme } from '../../context/ThemeContext'
+import { richText } from '../../lib/richText'
 
 export function Hero() {
   const { site, profile } = usePortfolio()
@@ -51,7 +52,7 @@ export function Hero() {
               </span>
               <span className="hero-chip">{site.availability}</span>
               <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
-                Tehran · Remote
+                Tehran · NL · Remote
               </span>
             </motion.div>
 
@@ -67,7 +68,8 @@ export function Hero() {
             />
 
             <motion.p variants={fadeUp} className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-              <span className="font-display font-bold text-foreground">{site.title}.</span> {hero.headline}
+              <span className="font-display font-bold text-foreground">{site.title}.</span>{' '}
+              {richText(hero.headline)}
             </motion.p>
 
             {roles.length > 0 && (

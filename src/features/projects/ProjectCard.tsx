@@ -71,6 +71,18 @@ export function ProjectCard({ project, featured, index, onOpen }: ProjectCardPro
 
           <p className="project-card__description">{project.description}</p>
 
+          {project.products && project.products.length > 0 ? (
+            <ul className="project-card__products" aria-label="Product surfaces">
+              {project.products.map((product) => (
+                <li key={product.name}>
+                  <span className="project-card__product">
+                    {product.shortName ?? product.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
           <footer className="project-card__footer">
             <ul className="project-card__tags" aria-label="Technologies">
               {project.tags.map((tag) => (

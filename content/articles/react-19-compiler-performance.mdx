@@ -1,14 +1,17 @@
 ---
-title: Deep Dive into React 19 Compiler, useEvent, and Performance Patterns
-description: Practical guidance for teams adopting the new toolchain — compiler mental models, useEvent semantics, and measurable performance wins.
+title: React 19 Compiler — Performance Mental Models for Production Teams
+description: How the React 19 compiler changes memoization strategy, when event APIs matter, and how to measure real rendering wins—not cargo-cult optimizations.
 date: 2025-11-12
-tags:
-  - React
-  - Performance
+tags: [React, Performance, Compiler]
 category: Performance
-image: /writing/react-19.svg
+image: /writing/react-19.jpg
+difficulty: Advanced
+featured: true
+popular: true
+eyebrow: Compiler deep dive
 mediumUrl: ""
 ---
+
 
 The React 19 compiler changes how teams think about memoization. Instead of sprinkling `useMemo` and `useCallback` as a reflex, you teach the compiler which values are safe to freeze and which updates must stay hot.
 

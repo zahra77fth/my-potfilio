@@ -38,6 +38,8 @@ export function ProjectModal({ project, index, onClose }: ProjectModalProps) {
 
   const hasLive = project.links.live.trim() !== ''
   const hasGithub = project.links.github.trim() !== ''
+  const products = project.products ?? []
+  const highlights = project.highlights ?? []
 
   return createPortal(
     <div className="project-modal">
@@ -113,6 +115,18 @@ export function ProjectModal({ project, index, onClose }: ProjectModalProps) {
               {project.name}
             </h2>
 
+            {(project.role || project.period) && (
+              <p className="project-modal__meta">
+                {project.role ? <span>{project.role}</span> : null}
+                {project.role && project.period ? (
+                  <span className="project-modal__meta-sep" aria-hidden>
+                    ·
+                  </span>
+                ) : null}
+                {project.period ? <span>{project.period}</span> : null}
+              </p>
+            )}
+
             <div className="project-modal__sections">
               <section
                 className="project-modal__section project-modal__section--card"
@@ -124,12 +138,91 @@ export function ProjectModal({ project, index, onClose }: ProjectModalProps) {
                 <p className="project-modal__description">{project.description}</p>
               </section>
 
+              {highlights.length > 0 ? (
+                <section
+                  className="project-modal__section project-modal__section--card"
+                  aria-labelledby="project-modal-platform"
+                >
+                  <h3 id="project-modal-platform" className="project-modal__section-label">
+                    Platform architecture
+                  </h3>
+                  <ul className="project-modal__highlights">
+                    {highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+
+              {products.length > 0 ? (
+                <div className="project-modal__product-stack">
+                  <h3 className="project-modal__section-label project-modal__section-label--stack">
+                    Product sections
+                  </h3>
+                  {products.map((product, productIndex) => {
+                    const headingId = `project-modal-product-${productIndex}`
+                    const techId = `${headingId}-tech`
+                    const productHighlights = product.highlights ?? []
+                    const productTags = product.tags ?? []
+
+                    return (
+                      <section
+                        key={product.name}
+                        className="project-modal__section project-modal__section--product"
+                        aria-labelledby={headingId}
+                      >
+                        <header className="project-modal__product-header">
+                          <div className="project-modal__product-header-row">
+                            <span className="project-modal__product-index" aria-hidden>
+                              {String(productIndex + 1).padStart(2, '0')}
+                            </span>
+                            {product.shortName ? (
+                              <span className="project-modal__product-code">{product.shortName}</span>
+                            ) : null}
+                          </div>
+                          <h4 id={headingId} className="project-modal__product-name">
+                            {product.name}
+                          </h4>
+                          {product.audience ? (
+                            <p className="project-modal__product-audience">{product.audience}</p>
+                          ) : null}
+                          <p className="project-modal__product-desc">{product.description}</p>
+                        </header>
+
+                        {productHighlights.length > 0 ? (
+                          <div className="project-modal__product-tech" aria-labelledby={techId}>
+                            <h5 id={techId} className="project-modal__product-tech-label">
+                              Technical contributions
+                            </h5>
+                            <ul className="project-modal__highlights">
+                              {productHighlights.map((item) => (
+                                <li key={item}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ) : null}
+
+                        {productTags.length > 0 ? (
+                          <ul className="project-modal__tags" aria-label={`${product.shortName ?? product.name} focus`}>
+                            {productTags.map((tag) => (
+                              <li key={tag}>
+                                <span className="project-modal__tag">{tag}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </section>
+                    )
+                  })}
+                </div>
+              ) : null}
+
               <section
                 className="project-modal__section project-modal__section--card"
                 aria-labelledby="project-modal-stack"
               >
                 <h3 id="project-modal-stack" className="project-modal__section-label">
-                  Tech stack
+                  Shared tech stack
                 </h3>
                 <ul className="project-modal__tags">
                   {project.tags.map((tag) => (
@@ -145,7 +238,7 @@ export function ProjectModal({ project, index, onClose }: ProjectModalProps) {
               <div className="project-modal__actions">
                 {hasLive ? (
                   <Button href={project.links.live} external>
-                    Live demo
+                    Visit product
                   </Button>
                 ) : null}
                 {hasGithub ? (

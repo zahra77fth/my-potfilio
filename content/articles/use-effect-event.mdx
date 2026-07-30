@@ -1,14 +1,17 @@
 ---
-title: useEffectEvent and the Next Generation of React Effects
-description: How upcoming effect APIs reduce stale closures and make event-driven side effects easier to reason about.
+title: useEffectEvent and the Next Generation of Effect Semantics
+description: Why stale closures keep leaking into production, how useEffectEvent separates reactive dependencies from event logic, and when adoption pays off.
 date: 2025-04-02
-tags:
-  - React
-  - Hooks
+tags: [React, Hooks, Effects]
 category: React
-image: /writing/useeffect-event.svg
+image: /writing/useeffect-event.jpg
+difficulty: Advanced
+featured: false
+popular: true
+eyebrow: Effects & hooks
 mediumUrl: ""
 ---
+
 
 Effects that both **subscribe** and **react to events** are where stale closures hide.
 

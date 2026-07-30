@@ -86,6 +86,19 @@ export const experienceDataSchema = z.object({
   items: z.array(experienceItemSchema).min(1),
 })
 
+const projectProductSchema = z.object({
+  name: z.string().min(1),
+  /** Short label shown on cards — e.g. "OMS", "Physician Panel" */
+  shortName: z.string().min(1).optional(),
+  /** One-line product purpose */
+  description: z.string().min(1),
+  /** Optional audience / surface label — e.g. "Patient · Public web" */
+  audience: z.string().min(1).optional(),
+  /** Staff-level technical contributions for this surface */
+  highlights: z.array(z.string().min(1)).min(1).optional(),
+  tags: z.array(z.string().min(1)).optional(),
+})
+
 export const projectItemSchema = z.object({
   name: z.string().min(1),
   description: z.string().min(1),
@@ -96,6 +109,11 @@ export const projectItemSchema = z.object({
     github: optionalUrl,
   }),
   featured: z.boolean(),
+  /** Optional case-study depth for featured / multi-surface products */
+  role: z.string().min(1).optional(),
+  period: z.string().min(1).optional(),
+  highlights: z.array(z.string().min(1)).optional(),
+  products: z.array(projectProductSchema).optional(),
 })
 
 export const projectsDataSchema = z.object({

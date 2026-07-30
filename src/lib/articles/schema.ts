@@ -17,6 +17,10 @@ export const articleFrontmatterSchema = z.object({
   image: z.string().min(1),
   draft: z.boolean().optional().default(false),
   mediumUrl: z.union([z.string().url(), z.literal('')]).optional(),
+  difficulty: z.enum(['Beginner', 'Intermediate', 'Advanced']).optional(),
+  featured: z.boolean().optional().default(false),
+  popular: z.boolean().optional().default(false),
+  eyebrow: z.string().min(1).optional(),
 })
 
 export function assertArticleFrontmatter(data: unknown): ArticleFrontmatter {

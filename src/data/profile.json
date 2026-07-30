@@ -2,7 +2,7 @@
   "hero": {
     "greeting": "Hello, I'm",
     "rotatingRoles": ["React & Next.js", "Design systems", "Performance", "Technical writing"],
-    "headline": "I ship fast, accessible React and Next.js apps — from legacy migrations to greenfield design systems.",
+    "headline": "I ship fast, accessible **React** and **Next.js** apps — from legacy migrations to greenfield **design systems**.",
     "ctaPrimary": { "label": "View my work", "href": "/#projects" },
     "ctaSecondary": { "label": "Get in touch", "href": "/contact" }
   },
@@ -10,9 +10,9 @@
     "title": "About me",
     "subtitle": "Frontend engineer · Architecture · Performance · Technical writing",
     "paragraphs": [
-      "I'm a frontend engineer with six years of experience shipping React and Next.js applications across fintech, healthcare, and consumer products. I'm comfortable owning architecture decisions, building component systems from scratch, and modernizing legacy codebases.",
-      "Most recently I lead frontend on Tapsi Doctor's web platform (Next.js 15, App Router, TypeScript, Tailwind), where bundle splitting and SSR cut initial load times by roughly 40%. I also set state-management conventions, integrated Socket.IO for real-time care flows, and established accessibility-checked UI patterns reused across product surfaces.",
-      "I write actively about React internals, performance patterns, and the React 19 compiler. Languages: native Persian; professional English and Turkish; Dutch at A2."
+      "I'm a frontend engineer with **six years** of experience shipping **React** and **Next.js** applications across **fintech**, **healthcare**, and consumer products. I'm comfortable owning **architecture** decisions, building **component systems** from scratch, and modernizing **legacy** codebases.",
+      "Most recently I lead frontend at **Tapsi Doctor** across **ODoc** (medicine ordering & consultation), **OMS** (order panel), **Physician Panel** (doctor panel), and **VMS** — on a shared **Next.js 15 App Router** stack. I own architecture boundaries, **SSR/SSG** strategy, the **design-system** layer, **Zustand** conventions, **Socket.IO** real-time flows, and **accessibility** — with **~40% faster** initial loads after the App Router migration.",
+      "I write actively about **React** internals, **performance** patterns, and the **React 19** compiler. Languages: native Persian; professional English and Turkish; Dutch at A2."
     ],
     "highlights": [
       { "label": "Years experience", "value": "6+" },
@@ -21,7 +21,7 @@
       { "label": "Published articles", "value": "5+" }
     ],
     "image": {
-      "src": "/avatar.svg",
+      "src": "/avatar.jpg",
       "alt": "Portrait of Zahra Fattahi"
     }
   }

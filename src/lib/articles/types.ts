@@ -1,5 +1,7 @@
 import type { ComponentType } from 'react'
 
+export type ArticleDifficulty = 'Beginner' | 'Intermediate' | 'Advanced'
+
 export interface ArticleFrontmatter {
   title: string
   description: string
@@ -10,6 +12,14 @@ export interface ArticleFrontmatter {
   image: string
   draft?: boolean
   mediumUrl?: string
+  /** Staff-facing depth signal on cards */
+  difficulty?: ArticleDifficulty
+  /** Homepage featured spotlight */
+  featured?: boolean
+  /** “Popular” rail without fake view counters */
+  popular?: boolean
+  /** Short badge label above the title — e.g. “Compiler deep dive” */
+  eyebrow?: string
 }
 
 export interface ArticleHeading {

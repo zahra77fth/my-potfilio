@@ -14,13 +14,17 @@ Adding an article = add that file. Homepage carousel, `/writing` index, sitemap,
 
 ```yaml
 ---
-title: Your title
-description: One or two sentences for cards + SEO
+title: React 19 Compiler — Performance Mental Models for Production Teams
+description: How the React 19 compiler changes memoization strategy…
 date: 2025-11-12
 updated: 2025-11-20        # optional
-tags: [React, Performance]
+tags: [React, Performance, Compiler]
 category: Performance
-image: /writing/react-19.svg
+image: /writing/react-19.jpg
+difficulty: Advanced       # Beginner | Intermediate | Advanced
+featured: true             # homepage spotlight
+popular: true              # “Popular with engineers” rail
+eyebrow: Compiler deep dive
 draft: false               # optional, default false
 mediumUrl: ""              # optional Medium/canonical republication URL
 ---
