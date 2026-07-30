@@ -52,7 +52,7 @@ export function Hero() {
               </span>
               <span className="hero-chip">{site.availability}</span>
               <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
-                Tehran · NL · Remote
+                Netherlands · Kennismigrant
               </span>
             </motion.div>
 

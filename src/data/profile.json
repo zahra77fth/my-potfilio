@@ -1,24 +1,29 @@
 {
   "hero": {
     "greeting": "Hello, I'm",
-    "rotatingRoles": ["React & Next.js", "Design systems", "Performance", "Technical writing"],
-    "headline": "I ship fast, accessible **React** and **Next.js** apps — from legacy migrations to greenfield **design systems**.",
+    "rotatingRoles": [
+      "React & Next.js",
+      "Frontend architecture",
+      "Design systems",
+      "Performance"
+    ],
+    "headline": "Senior Frontend Engineer shipping production **React** and **Next.js** systems — **App Router** architecture, **design systems**, SSR/SEO, accessibility, and performance that cuts load times by **~40%**.",
     "ctaPrimary": { "label": "View my work", "href": "/#projects" },
     "ctaSecondary": { "label": "Get in touch", "href": "/contact" }
   },
   "about": {
     "title": "About me",
-    "subtitle": "Frontend engineer · Architecture · Performance · Technical writing",
+    "subtitle": "Senior Frontend Engineer · Architecture · Design systems · Performance",
     "paragraphs": [
-      "I'm a frontend engineer with **six years** of experience shipping **React** and **Next.js** applications across **fintech**, **healthcare**, and consumer products. I'm comfortable owning **architecture** decisions, building **component systems** from scratch, and modernizing **legacy** codebases.",
-      "Most recently I lead frontend at **Tapsi Doctor** across **ODoc** (medicine ordering & consultation), **OMS** (order panel), **Physician Panel** (doctor panel), and **VMS** — on a shared **Next.js 15 App Router** stack. I own architecture boundaries, **SSR/SSG** strategy, the **design-system** layer, **Zustand** conventions, **Socket.IO** real-time flows, and **accessibility** — with **~40% faster** initial loads after the App Router migration.",
-      "I write actively about **React** internals, **performance** patterns, and the **React 19** compiler. Languages: native Persian; professional English and Turkish; Dutch at A2."
+      "I'm a **Senior Frontend Engineer** with **6+ years** shipping production **React** and **Next.js** products across **healthcare**, **fintech**, **travel booking**, and **SaaS**. I own large frontend systems end to end: **App Router** architecture, **design systems**, domain modeling, **SSR** and **SEO**, **accessibility**, and performance work that cut initial load by about **40%** and key page load by about **25%**.",
+      "At **Tapsi Doctor** I own architecture and delivery standards across five production surfaces — patient app, consultation suite, operations console, physician workspace, and a shared design system (**Raasti Kit**). I partner closely with product, design, and backend, and I care how interfaces feel as much as how they scale.",
+      "I'm seeking a **Senior Frontend** role in the **Netherlands** (Amsterdam, Rotterdam, Utrecht) with room to grow into **Staff**-level ownership. **Kennismigrant** sponsorship eligible. Languages: **Fluent English**; native Persian; professional Turkish; Dutch at **A2**, progressing to B1."
     ],
     "highlights": [
       { "label": "Years experience", "value": "6+" },
-      { "label": "Load-time cut (Tapsi Doctor)", "value": "~40%" },
-      { "label": "Nobitex perf. gain", "value": "~25%" },
-      { "label": "Published articles", "value": "5+" }
+      { "label": "Initial load cut (Tapsi Doctor)", "value": "~40%" },
+      { "label": "Key page load (Nobitex)", "value": "~25%" },
+      { "label": "Design system teams", "value": "5" }
     ],
     "image": {
       "src": "/avatar.jpg",

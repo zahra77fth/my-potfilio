@@ -1,164 +1,152 @@
 {
   "title": "Projects",
-  "subtitle": "Selected product work across healthcare, fintech, consumer platforms, and contract delivery",
+  "subtitle": "Production systems across healthcare, fintech, travel booking, and SaaS foundations",
   "items": [
     {
       "name": "Tapsi Doctor Platform",
-      "description": "Lead frontend across Tapsi Doctor’s core web products — ODoc, OMS, Physician Panel, and VMS — unifying them on Next.js 15 App Router with a shared design system, SSR where it matters, and real-time care & fulfillment flows.",
+      "description": "National telehealth frontend across five production surfaces — patient app, consultation suite, operations console, physician workspace, and Raasti Kit design system — unified on Next.js 15 App Router with SSR, domain packages, and realtime care flows.",
       "image": "/projects/pulse.jpg",
-      "tags": ["Next.js 15", "App Router", "TypeScript", "SSR/SSG", "Zustand", "Socket.IO", "Tailwind", "Headless UI"],
+      "tags": [
+        "Next.js 15",
+        "App Router",
+        "TypeScript",
+        "SSR/SSG",
+        "SignalR",
+        "Storybook",
+        "React 19",
+        "Vite"
+      ],
       "links": { "live": "https://tapsi.doctor", "github": "" },
       "featured": true,
-      "role": "Frontend Developer · Platform ownership across product surfaces",
-      "period": "Feb 2025 — Present",
+      "role": "Senior Frontend Engineer · Architecture & delivery ownership",
+      "period": "May 2025 — Present",
       "highlights": [
-        "Defined a shared Next.js 15 App Router architecture — route groups, layouts, and server/client boundaries reused by ODoc, OMS, Physician Panel, and VMS",
-        "Drove the Pages Router → App Router migration with SSR/SSG strategy, dynamic segments, and route-level code splitting — ~40% faster initial loads",
-        "Established the design-system foundation (Tailwind + Headless UI) and Zustand / form / error-boundary conventions adopted across every panel",
-        "Standardized Socket.IO patterns for live order status, visit state, and patient–doctor messaging without coupling panels to each other"
+        "Own frontend delivery across 5 production products and align sprints with product and design so polish and technical risk move together",
+        "Migrated critical surfaces from Pages Router to Next.js 15 App Router with Server Components, SSR, SSG, and route-level splitting — ~40% faster initial load; 15 pages converted to SSR",
+        "Designed and published a shared DDD-inspired TypeScript package so teams stopped reinventing booking and visit rules in UI code",
+        "Architected Raasti Kit — npm-distributed design system with Storybook, design tokens, and bundle budgets — adopted by 5 teams",
+        "Shipped JWT role-based health UI and realtime teleconsultation with SignalR; physician analytics on React 19 + Vite with Vitest, Husky, and production monitoring"
       ],
       "products": [
         {
-          "name": "ODoc — Medicine ordering & online consultation",
+          "name": "Patient app — Medicine ordering & online consultation",
           "shortName": "ODoc",
           "audience": "Patient · Public & authenticated web",
           "description": "Patient-facing product for ordering medicine and booking online medical consultations — specialty discovery, physician profiles, pharmacy checkout, document upload, and live consult status.",
-          "tags": ["SSR/SSG", "SEO", "App Router", "Socket.IO", "Checkout flows"],
+          "tags": ["SSR/SSG", "SEO", "App Router", "JWT", "Checkout"],
           "highlights": [
-            "Architected the public ODoc surface on Next.js 15 App Router with a clear server/client split: SSR/SSG for specialty & physician discovery (SEO + TTFB), client islands for checkout, consult booking, and uploads",
-            "Designed route structure for dual journeys — medicine order funnel and consultation funnel — sharing layout shells, auth gates, and design-system primitives without duplicating business UI",
-            "Implemented granular bundle splitting and streaming-friendly page composition so marketing/discovery routes stay light while transactional steps load only what they need",
-            "Integrated Socket.IO for live consultation status (queue → in-progress → completed) and aligned UI state with Zustand so patients see consistent progress across tabs and reconnects",
-            "Built resilient multi-step forms (order + consult intake) with typed validation, accessible field wiring, and error boundaries around payment and prescription-sensitive steps",
-            "Owned performance and a11y on high-traffic patient paths — focus management, keyboard flows, and reduced layout shift on SSR-hydrated discovery pages"
+            "Architected public surfaces on Next.js 15 App Router with SSR/SSG for specialty and physician discovery (SEO + TTFB), and client islands for checkout, consult booking, and uploads",
+            "Designed dual journeys — medicine order and consultation — sharing layout shells, auth gates, and design-system primitives",
+            "Owned performance and accessibility on high-traffic patient paths, including focus management and reduced layout shift on SSR-hydrated pages"
           ]
         },
         {
-          "name": "OMS — Order panel",
+          "name": "Operations console — Order panel",
           "shortName": "OMS",
           "audience": "Operations · Authenticated panel",
-          "description": "Internal order-management panel for pharmacy and delivery operations — order lifecycle, filters, status transitions, and high-volume fulfillment tooling used by ops day-to-day.",
-          "tags": ["App Router", "Real-time", "Data-dense UI", "Zustand", "Performance"],
+          "description": "Internal order-management console for pharmacy and delivery operations — order lifecycle, filters, status transitions, and high-volume fulfillment tooling.",
+          "tags": ["App Router", "Data-dense UI", "Performance", "Realtime"],
           "highlights": [
-            "Led the OMS panel architecture as an authenticated App Router application — protected layouts, role-aware navigation, and isolated feature modules for order list, detail, and lifecycle actions",
-            "Built data-dense order tables and filter/search UX tuned for operator speed: predictable sorting, URL-synced query state, and progressive loading so large result sets stay responsive",
-            "Wired Socket.IO for live order-status updates so the panel reflects fulfillment changes without full refetch storms; paired with Zustand for optimistic transitions and rollback on failed mutations",
-            "Applied the same SSR shell + client-heavy workspace pattern used across internal panels — fast first paint for the authenticated chrome, deferred hydration for heavy interactive grids",
-            "Hardened reliability with typed order-domain models, centralized error boundaries around mutation-heavy flows, and consistent empty/loading/error states across the panel",
-            "Contributed to the ~40% load-time improvement by cutting unused panel chunks, lazy-loading secondary drawers/modals, and aligning caching strategy with order-list refresh patterns"
+            "Led authenticated App Router architecture with role-aware navigation and isolated modules for order list, detail, and lifecycle actions",
+            "Built data-dense tables and URL-synced filters tuned for operator speed under national-scale volume",
+            "Wired realtime status updates so fulfillment changes appear without refetch storms"
           ]
         },
         {
-          "name": "Physician Panel — Doctor panel",
+          "name": "Physician workspace — Doctor panel",
           "shortName": "Physician",
-          "audience": "Physicians · Authenticated clinical workspace",
-          "description": "Doctor-facing panel for running online consultations — visit queues, patient context, messaging/call flows, and clinical actions that must stay fast, clear, and accessible under time pressure.",
-          "tags": ["Real-time chat", "App Router", "a11y", "Zustand", "Clinical UX"],
+          "audience": "Physicians · Clinical workspace",
+          "description": "Doctor-facing workspace for online consultations — visit queues, patient context, messaging/call flows, and analytics on React 19 + Vite.",
+          "tags": ["React 19", "Vite", "SignalR", "a11y", "Vitest"],
           "highlights": [
-            "Architected the Physician Panel as a focused clinical workspace on App Router — persistent shell for queue + active visit, with route segments for history, profile context, and consultation detail",
-            "Implemented real-time visit and messaging surfaces with Socket.IO (incoming queue, status flips, patient–doctor chat) and Zustand stores scoped per visit to avoid cross-patient state leaks",
-            "Designed UI composition for concurrent clinical work: sticky patient context, interrupt-safe status actions, and clear affordances for ending/escalating a consult without burying critical controls",
-            "Prioritized accessibility for dense clinical UI — keyboard-first queues, focus traps in dialogs, sufficient contrast, and predictable tab order so doctors can move quickly without relying on the pointer alone",
-            "Shared design-system and form primitives with ODoc/OMS while keeping physician-only domains (visit actions, clinical notes entry points) isolated behind typed module boundaries",
-            "Optimized perceived performance of the active-visit path: prefetch adjacent visit data, defer non-critical widgets, and keep the chat timeline smooth under frequent socket events"
+            "Architected clinical workspace shells for queue + active visit with realtime SignalR messaging and status flips",
+            "Delivered physician analytics on React 19 and Vite with Vitest, Husky, and release ownership through production monitoring",
+            "Prioritized accessibility for dense clinical UI — keyboard-first queues, focus traps, and predictable tab order"
           ]
         },
         {
-          "name": "VMS — Visit management",
+          "name": "Consultation suite — Visit management",
           "shortName": "VMS",
-          "audience": "Ops & care coordination · Authenticated panel",
-          "description": "Visit-management panel coordinating consultation lifecycle across patients, physicians, and operations — scheduling, queue health, status transitions, and cross-panel consistency with ODoc and the Physician Panel.",
-          "tags": ["App Router", "Domain modeling", "Real-time", "Cross-panel sync"],
+          "audience": "Ops & care coordination",
+          "description": "Visit-management suite coordinating consultation lifecycle across patients, physicians, and operations — scheduling, queue health, and cross-product status consistency.",
+          "tags": ["Domain modeling", "App Router", "Realtime", "DDD"],
           "highlights": [
-            "Modeled visit lifecycle UI on App Router with shared domain types aligned to ODoc booking and Physician Panel execution — one source of truth for status vocabulary across products",
-            "Built coordination views (queues, schedules, exception states) with real-time Socket.IO updates so ops see the same visit truth physicians and patients experience",
-            "Structured feature architecture so VMS consumes shared design-system and auth layouts while owning visit-specific modules (assignment, transitions, operational filters)",
-            "Used SSR for authenticated shell bootstrap and client rendering for live boards — balancing fast entry with continuous socket-driven updates",
-            "Introduced resilient state patterns (Zustand + explicit transition guards) to prevent illegal status jumps and to surface recoverable errors when upstream services lag",
-            "Improved operability with URL-addressable filters, consistent loading skeletons, and performance budgets on list-heavy visit boards"
+            "Modeled visit lifecycle UI with shared domain types from the DDD package — one vocabulary across patient, physician, and ops products",
+            "Built coordination views with realtime updates so ops see the same visit truth clinicians and patients experience"
+          ]
+        },
+        {
+          "name": "Raasti Kit — Shared design system",
+          "shortName": "Raasti",
+          "audience": "5 product teams · npm package",
+          "description": "Npm-distributed design system with Storybook, design tokens, and bundle budgets — one interaction language for design and engineering.",
+          "tags": ["Storybook", "Design tokens", "npm", "Bundle budgets"],
+          "highlights": [
+            "Architected and published Raasti Kit for adoption across five teams, reducing duplicate UI",
+            "Enforced tokens and bundle budgets so design-system growth stayed measurable in production"
           ]
         }
       ]
     },
     {
+      "name": "Travel Booking Experience",
+      "description": "Cross-platform travel booking product UI across React Native and Next.js — search, listing, and checkout with TanStack Query, WCAG-aligned forms, and Lighthouse-driven performance work.",
+      "image": "/projects/green.jpg",
+      "tags": ["React Native", "Next.js", "TanStack Query", "WCAG", "Lighthouse"],
+      "links": { "live": "", "github": "" },
+      "featured": false,
+      "role": "Frontend Consultant · Independent",
+      "period": "Jun 2024 — Apr 2025",
+      "highlights": [
+        "Built travel booking across web and mobile with React Native, Next.js, and TanStack Query",
+        "Partnered with design on search, listing, and checkout — including WCAG-aligned forms so travelers could complete bookings without accessibility dead ends",
+        "Diagnosed slow booking screens against Lighthouse budgets; introduced code splitting, lazy loading, and SCSS delivery standards on high-intent paths"
+      ]
+    },
+    {
+      "name": "Greenfield Next.js Foundations",
+      "description": "Private MVP foundations on Next.js 15 App Router — routing conventions, SSR strategy, JWT API integration, feature-based structure, and shadcn/ui standards for early product teams.",
+      "image": "/projects/flow.jpg",
+      "tags": ["Next.js 15", "App Router", "shadcn/ui", "Zustand", "JWT"],
+      "links": { "live": "", "github": "" },
+      "featured": false,
+      "role": "Frontend Consultant · Independent",
+      "period": "Jun 2024 — Apr 2025",
+      "highlights": [
+        "Set greenfield App Router architecture so founders and small teams could ship without reinventing structure every week",
+        "Standardized forms, client state, and realtime patterns (React Hook Form, Zustand, Socket.IO) with architecture notes for handover",
+        "Established feature-based structure and shadcn/ui standards that held after engagement end"
+      ]
+    },
+    {
       "name": "Nobitex Trading Experience",
-      "description": "High-volume cryptocurrency exchange UI for Iran’s largest trading platform — real-time market data, account flows, and a shared component system tuned for heavy throughput.",
+      "description": "High-traffic cryptocurrency exchange UI — trading and account features, Socket.IO market dashboards, and a shared shadcn/ui + Storybook library that improved key-flow page load by about 25%.",
       "image": "/projects/atlas.jpg",
-      "tags": ["React", "TypeScript", "Socket.IO", "shadcn/ui", "Redux", "Performance"],
+      "tags": ["React", "TypeScript", "Socket.IO", "shadcn/ui", "Storybook", "JWT"],
       "links": { "live": "https://nobitex.ir", "github": "" },
       "featured": false,
-      "role": "Frontend Developer · Trading & account surfaces",
-      "period": "Jan 2022 — Apr 2024",
+      "role": "Frontend Engineer · Trading & account surfaces",
+      "period": "Feb 2022 — Jun 2024",
       "highlights": [
-        "Built real-time market interfaces with Socket.IO — order books, tickers, and notifications under sustained high throughput",
-        "Introduced and customized shadcn/ui as the shared component library, replacing inconsistent ad-hoc UI and accelerating feature delivery",
-        "Optimized rendering, bundle size, and asset loading — ~25% improvement in page-load times with measurable engagement lift",
-        "Led a design-pattern refactor that raised maintainability by ~35% (internal review) and shortened average bug-fix time",
-        "Partnered closely with design and product on trading and account journeys where correctness and latency both matter"
+        "Shipped trading and account features in React and TypeScript with JWT sessions under spike market activity",
+        "Built and hardened Socket.IO dashboards for order books, tickers, alerts, and notifications",
+        "Improved key-flow page load by about 25% through rendering, bundle, and asset work",
+        "Drove adoption of a shared shadcn/ui and Storybook library that reduced duplicate components across teams"
       ]
     },
     {
-      "name": "Hitobit — Frontend Architecture",
-      "description": "Contract frontend architecture work focused on performance, responsiveness, and scalable React structure for a production product surface.",
-      "image": "/projects/hitobit.jpg",
-      "tags": ["React", "Performance", "Architecture", "Responsive UI"],
-      "links": { "live": "", "github": "" },
-      "featured": false,
-      "role": "Frontend Developer · Independent contract",
-      "period": "May 2024 — Jan 2025",
-      "highlights": [
-        "Contributed to front-end architecture decisions with emphasis on maintainable module boundaries and predictable data flow",
-        "Improved perceived performance and responsiveness across key product views through render discipline and layout stability",
-        "Aligned shared UI patterns with Atomic Design conventions used across concurrent contract deliveries",
-        "Collaborated remotely with product stakeholders to ship production-ready interfaces under tight iteration cycles"
-      ]
-    },
-    {
-      "name": "Cheetavel — Next.js Foundation",
-      "description": "Greenfield Next.js 15 App Router foundation for a scalable product — routing architecture, Atomic Design structure, and a shadcn/ui-based design system from day one.",
-      "image": "/projects/flow.jpg",
-      "tags": ["Next.js 15", "App Router", "shadcn/ui", "Zustand", "Atomic Design"],
-      "links": { "live": "", "github": "" },
-      "featured": false,
-      "role": "Frontend Developer · Foundational architecture",
-      "period": "May 2024 — Jan 2025",
-      "highlights": [
-        "Designed and implemented the foundational Next.js v15 architecture using the App Router for optimized routing and long-term scalability",
-        "Established Atomic Design component structure so feature teams can compose UI without duplicating primitives",
-        "Adopted shadcn/ui + Zustand as the baseline design-system and state stack for greenfield velocity",
-        "Set conventions for forms (React Hook Form), real-time hooks (Socket.IO-ready), and folder boundaries that scale with the product"
-      ]
-    },
-    {
-      "name": "Pool Khord — Cross-platform UI",
-      "description": "End-to-end product UI across React Native, React, and Next.js — shared visual language, responsive Tailwind layouts, and form patterns that travel between mobile and web.",
-      "image": "/projects/green.jpg",
-      "tags": ["React Native", "React", "Next.js", "Tailwind", "React Hook Form"],
-      "links": { "live": "", "github": "" },
-      "featured": false,
-      "role": "Frontend Developer · Cross-platform product UI",
-      "period": "May 2024 — Jan 2025",
-      "highlights": [
-        "Delivered comprehensive UI across React Native, React, and Next.js while keeping interaction patterns consistent for users",
-        "Implemented responsive Tailwind layouts that adapt cleanly from mobile-first flows to desktop density",
-        "Used React Hook Form for typed, reusable validation across multi-step and high-interaction forms",
-        "Shared Atomic Design primitives and Zustand/Recoil state patterns with sibling contract products for faster delivery"
-      ]
-    },
-    {
-      "name": "Axon — Web Product Surfaces",
-      "description": "Responsive React applications and CMS-driven marketing surfaces — Redux state, SEO collaboration, and modular CSS architecture that sped delivery across product initiatives.",
+      "name": "Axon — Growth Site & CRM",
+      "description": "SEO-oriented marketing surfaces for axon.me plus CRM tables, admin dashboards, and multi-step workflows — Redux state and BEM CSS that sped delivery for sales and operations.",
       "image": "/projects/axon.jpg",
-      "tags": ["React", "Redux", "Tailwind", "SEO", "BEM"],
-      "links": { "live": "", "github": "" },
+      "tags": ["React", "Redux", "SCSS", "BEM", "SEO"],
+      "links": { "live": "https://axon.me", "github": "" },
       "featured": false,
       "role": "Frontend Developer",
-      "period": "Jun 2020 — Jan 2022",
+      "period": "Oct 2019 — Feb 2022",
       "highlights": [
-        "Owned dynamic landing pages and content-management surfaces; partnered with SEO to remove handoff friction between teams",
-        "Implemented BEM methodology for modular CSS — ~20% faster delivery and fewer style regressions",
-        "Built production interfaces with Tailwind CSS, Bootstrap, and Vuetify across concurrent product initiatives",
-        "Collaborated with cross-functional teams on Redux-based state and performance-conscious responsive layouts"
+        "Built SEO-oriented landing pages and responsive SCSS patterns with marketing and SEO stakeholders",
+        "Delivered CRM tables, admin dashboards, and multi-step workflows that cut repetitive manual work",
+        "Introduced Redux for multi-page predictability and BEM modular CSS for fewer style regressions"
       ]
     }
   ]

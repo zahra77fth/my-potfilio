@@ -1,53 +1,84 @@
 {
   "title": "Skills",
-  "subtitle": "Stack and practices I use across product teams",
+  "subtitle": "Languages, architecture, and delivery practices from production systems",
   "categories": [
     {
       "name": "Languages",
-      "items": ["JavaScript", "TypeScript", "HTML5", "CSS3", "Python (basic)"]
+      "items": ["TypeScript", "JavaScript (ES2017+)", "HTML5", "CSS3", "SCSS"]
     },
     {
-      "name": "Frameworks & UI",
+      "name": "Frontend",
       "items": [
-        "React",
-        "Next.js (App Router, Server Components)",
+        "React 18/19",
+        "Next.js 15 (App Router, Server Components, SSR, SSG)",
         "React Native",
-        "Vue",
-        "Nuxt",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "Headless UI",
-        "Storybook"
+        "Vite"
       ]
     },
     {
-      "name": "State, data & real-time",
+      "name": "Architecture",
       "items": [
+        "Feature-based structure",
+        "DDD-inspired frontend",
+        "Atomic Design",
+        "Clean Architecture boundaries",
+        "Design systems"
+      ]
+    },
+    {
+      "name": "State & data",
+      "items": [
+        "TanStack Query",
         "Zustand",
         "Redux",
-        "Recoil",
-        "React Query",
         "React Hook Form",
-        "Socket.IO",
-        "REST APIs",
-        "Prisma ORM"
+        "Zod",
+        "REST",
+        "JWT",
+        "OAuth2"
       ]
     },
     {
-      "name": "Quality & delivery",
+      "name": "UI & design",
       "items": [
+        "Storybook",
+        "Design tokens",
+        "shadcn/ui",
+        "Headless UI",
+        "Figma",
+        "Responsive layout"
+      ]
+    },
+    {
+      "name": "Quality",
+      "items": [
+        "Core Web Vitals",
+        "Lighthouse",
+        "WCAG 2.1 AA",
         "Vitest",
         "Jest",
         "React Testing Library",
         "Playwright",
+        "Cypress",
+        "ESLint",
+        "Prettier",
+        "Husky"
+      ]
+    },
+    {
+      "name": "Delivery & realtime",
+      "items": [
         "GitHub Actions",
+        "CI/CD",
+        "Docker",
         "Vercel",
-        "Docker (basic)",
-        "Lighthouse",
-        "Web Vitals",
-        "WCAG AA",
-        "next-intl",
-        "RTL/LTR layouts"
+        "WebSockets",
+        "Socket.IO",
+        "SignalR",
+        "Tailwind CSS",
+        "BEM",
+        "RTL",
+        "i18n (FormatJS)"
       ]
     }
   ]

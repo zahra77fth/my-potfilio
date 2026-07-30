@@ -1,6 +1,6 @@
 {
   "title": "Contact",
-  "subtitle": "Interested in frontend roles, contract work, or technical collaboration? I'd love to hear from you.",
+  "subtitle": "Open to Senior Frontend roles in the Netherlands — and conversations about architecture, design systems, and performance.",
   "form": {
     "nameLabel": "Your name",
     "emailLabel": "Email address",
@@ -9,10 +9,10 @@
     "submitLabel": "Send message",
     "successMessage": "Thanks for reaching out. Your message has been recorded locally — connect a form backend (e.g. Formspree) to deliver it to zafth98@gmail.com.",
     "topics": [
+      "Senior Frontend role (NL)",
       "Full-time opportunity",
-      "Contract / freelance",
-      "Technical writing",
-      "Collaboration",
+      "Contract / consulting",
+      "Architecture discussion",
       "Other"
     ]
   },
@@ -28,28 +28,33 @@
       "href": "tel:+989120141339"
     },
     {
-      "label": "Location",
-      "value": "Tehran · Open to Netherlands & remote",
+      "label": "Target",
+      "value": "Netherlands · Amsterdam, Rotterdam, Utrecht",
       "href": ""
     },
     {
       "label": "Availability",
-      "value": "Full-time & contract · worldwide, NL preferred",
+      "value": "Senior Frontend · Kennismigrant eligible",
       "href": ""
+    },
+    {
+      "label": "Portfolio",
+      "value": "zahra-fattahi.vercel.app",
+      "href": "https://zahra-fattahi.vercel.app"
     }
   ],
   "faq": [
     {
       "question": "What kind of roles are you looking for?",
-      "answer": "Senior frontend and lead-leaning IC roles focused on React, Next.js, design systems, performance, and real-time product surfaces. Open to any industry or business domain — healthcare and fintech are strengths, not limits."
+      "answer": "A Senior Frontend role focused on React, TypeScript, Next.js, frontend architecture, design systems, and performance — with room to grow into Staff-level ownership. Open to healthcare, fintech, travel, SaaS, and other product domains."
     },
     {
-      "question": "Are you open to remote work or relocating?",
-      "answer": "Yes. I can work remotely for teams anywhere, and I’m especially interested in opportunities in the Netherlands (remote, hybrid, or on-site). I’ve already delivered successfully for distributed and international clients."
+      "question": "Are you open to the Netherlands?",
+      "answer": "Yes — Amsterdam, Rotterdam, and Utrecht are priorities. I am Kennismigrant sponsorship eligible and open to remote, hybrid, or on-site arrangements."
     },
     {
       "question": "Can I download your résumé?",
-      "answer": "Yes — use the résumé link on the homepage or contact page to download the latest PDF."
+      "answer": "Yes — use the résumé link on the homepage or contact page to download the latest PDF. The portfolio content is kept in sync with that document."
     }
   ]
 }

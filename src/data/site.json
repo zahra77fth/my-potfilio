@@ -1,11 +1,11 @@
 {
   "name": "Zahra Fattahi",
-  "title": "Frontend Developer",
-  "tagline": "Six years building React and Next.js products across fintech, healthcare, and high-traffic consumer platforms.",
+  "title": "Senior Frontend Engineer",
+  "tagline": "6+ years shipping React and Next.js products across healthcare, fintech, travel booking, and SaaS — with ownership of architecture, design systems, and performance.",
   "email": "zafth98@gmail.com",
-  "location": "Tehran, Iran · Open to Netherlands & remote",
-  "availability": "Open to full-time and contract roles worldwide — especially the Netherlands",
-  "domain": "",
+  "location": "Open to the Netherlands · Amsterdam, Rotterdam, Utrecht",
+  "availability": "Senior Frontend · Kennismigrant sponsorship eligible · Open to NL",
+  "domain": "https://zahra-fattahi.vercel.app",
   "resumeUrl": "/resume.pdf",
   "social": {
     "github": "https://github.com/zahra-hsb",
@@ -23,9 +23,9 @@
     { "label": "Contact", "href": "/contact" }
   ],
   "seo": {
-    "title": "Zahra Fattahi — Frontend Developer",
-    "description": "Portfolio of Zahra Fattahi, a frontend engineer specializing in React, Next.js, design systems, performance, and real-time web applications.",
-    "keywords": "Zahra Fattahi, frontend developer, React, Next.js, TypeScript, Tehran, Tapsi Doctor, OMS, VMS, Physician Panel, ODoc, healthcare, fintech",
+    "title": "Zahra Fattahi — Senior Frontend Engineer",
+    "description": "Senior Frontend Engineer specializing in React, TypeScript, Next.js, frontend architecture, design systems, and performance. Open to Senior Frontend roles in the Netherlands.",
+    "keywords": "Zahra Fattahi, Senior Frontend Engineer, React, Next.js, TypeScript, design systems, Netherlands, Kennismigrant, Tapsi Doctor, Nobitex, performance, SSR",
     "ogImage": "/og-image.jpg"
   }
 }

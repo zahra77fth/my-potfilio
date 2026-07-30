@@ -1,74 +1,81 @@
 {
   "title": "Experience",
-  "subtitle": "Product engineering across healthcare, crypto, and contract delivery",
+  "subtitle": "Senior frontend ownership across healthcare, fintech, travel booking, and SaaS",
   "items": [
     {
-      "role": "Frontend Developer",
+      "role": "Senior Frontend Engineer",
       "company": "Tapsi Doctor",
-      "period": "Feb 2025 — Present",
-      "location": "Tehran, Iran · Healthcare",
-      "description": "Lead frontend across **ODoc** (medicine + consultation), **OMS** (order panel), **Physician Panel** (doctor panel), and **VMS** — shared **Next.js 15** platform with ownership of **architecture**, **SSR** strategy, **performance**, and **accessibility**.",
+      "period": "May 2025 — Present",
+      "location": "Tehran · National telehealth platform",
+      "description": "Joined to unify frontend quality across products that had grown separately. Now own architecture and delivery standards for **five production surfaces** — patient, clinician, and operations products at national scale.",
       "achievements": [
-        "Defined shared **Next.js 15 App Router** architecture (route groups, server/client boundaries, **design system**) powering **ODoc**, **OMS**, **Physician Panel**, and **VMS**",
-        "Migrated legacy **Pages Router** surfaces to **App Router** with **SSR/SSG** and route-level **code splitting** — **~40% faster** initial loads",
-        "**ODoc**: patient medicine-ordering and online-consultation funnels with SEO-focused **SSR** discovery and **Socket.IO** consult status",
-        "**OMS**: high-volume order panel — data-dense tables, live fulfillment status, optimistic **Zustand** mutations",
-        "**Physician Panel**: clinical doctor workspace with **real-time** visit queues, chat, and **accessibility**-first dense UI",
-        "Set **Zustand**, form, validation, and **error-boundary** conventions adopted across every authenticated panel"
+        "Own frontend delivery across **5 production products** (patient app, consultation suite, operations console, physician workspace, shared design system). Align sprints with product and design so polish and technical risk move together",
+        "Migrated critical surfaces from **Pages Router** to **Next.js 15 App Router** with **Server Components**, **SSR**, **SSG**, metadata, and route-level splitting — converted **15 pages** to SSR, improved technical SEO, and cut initial load by about **40%**",
+        "Designed and published a shared **DDD-inspired TypeScript** package for business domains so product teams stopped reinventing booking and visit rules in UI code",
+        "Architected **Raasti Kit**, an npm-distributed **design system** with **Storybook**, design tokens, and bundle budgets — adopted by **5 teams**, reducing duplicate UI",
+        "Shipped **JWT**-authenticated, role-based health UI and realtime teleconsultation with **SignalR**; delivered physician analytics on **React 19** and **Vite**, with **Vitest**, **Husky**, and production monitoring ownership"
       ],
-      "technologies": ["React 18", "Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Socket.IO", "Headless UI"]
+      "technologies": [
+        "React 18/19",
+        "Next.js 15",
+        "TypeScript",
+        "SignalR",
+        "Vite",
+        "Storybook",
+        "Vitest",
+        "Tailwind CSS"
+      ]
     },
     {
-      "role": "Frontend Developer (Independent contracts)",
-      "company": "Pool Khord · Hitobit · Cheetavel",
-      "period": "May 2024 — Jan 2025",
-      "location": "Remote",
-      "description": "Delivered three client products with shared architecture patterns: **Atomic Design**, **Zustand/Recoil**, **React Hook Form**, **Socket.IO**, and **shadcn/ui**.",
+      "role": "Frontend Consultant",
+      "company": "Independent",
+      "period": "Jun 2024 — Apr 2025",
+      "location": "Remote · Travel booking & private MVP products",
+      "description": "Worked with early product teams that needed senior frontend judgment before hiring a permanent FE org. Focused on booking UX and foundations that would still hold after handover.",
       "achievements": [
-        "**Pool Khord**: comprehensive UI across **React Native**, **React**, and **Next.js** with responsive **Tailwind** layouts",
-        "**Hitobit**: contributed to front-end **architecture** with focus on **performance** and responsiveness",
-        "**Cheetavel**: designed foundational **Next.js 15** architecture using the **App Router** for scalability"
+        "Built a **travel booking** experience across web and mobile with **React Native**, **Next.js**, and **TanStack Query** — search, listing, and checkout flows with **WCAG**-aligned forms",
+        "Diagnosed slow booking screens against **Lighthouse** budgets; introduced **code splitting**, lazy loading, and **SCSS** delivery standards that improved perceived performance on high-intent paths",
+        "For private MVP projects, set greenfield **Next.js 15 App Router** architecture: routing conventions, SSR strategy, **JWT** API integration, feature-based structure, and **shadcn/ui** standards",
+        "Standardized forms, client state, and realtime patterns (**React Hook Form**, **Zustand**, **Socket.IO**) across engagements, with architecture notes for handover"
       ],
-      "technologies": ["React", "Next.js 15", "React Native", "Tailwind CSS", "shadcn/ui", "Zustand", "Recoil"]
+      "technologies": [
+        "Next.js 15",
+        "React Native",
+        "TanStack Query",
+        "shadcn/ui",
+        "Zustand",
+        "React Hook Form",
+        "Socket.IO"
+      ]
     },
     {
-      "role": "Frontend Developer",
+      "role": "Frontend Engineer",
       "company": "Nobitex",
-      "period": "Jan 2022 — Apr 2024",
-      "location": "Tehran, Iran · Cryptocurrency exchange",
-      "description": "Shipped trading and account features on Iran's largest cryptocurrency exchange, partnering closely with design and product.",
+      "period": "Feb 2022 — Jun 2024",
+      "location": "Tehran · Cryptocurrency exchange",
+      "description": "Spent more than two years on a high-traffic exchange where frontend mistakes show up as lost trust in live prices and orders. Grew from feature delivery into shared UI standards and performance ownership.",
       "achievements": [
-        "Built **real-time** market data interfaces with **Socket.IO** — order books, tickers, and notifications under heavy throughput",
-        "Introduced and customized **shadcn/ui** as the shared **component library**, replacing inconsistent ad-hoc UI",
-        "Optimized rendering, **bundle size**, and asset loading — **~25%** improvement in page-load times",
-        "Led refactor toward consistent design patterns — **~35%** maintainability gain and faster bug resolution"
+        "Shipped trading and account features in **React** and **TypeScript** with **JWT** sessions — flows that had to stay correct when market activity spiked",
+        "Built and hardened **Socket.IO** dashboards for order books, tickers, alerts, and notifications under peak throughput",
+        "Improved key-flow page load by about **25%** (analytics and Lighthouse) through rendering, bundle, and asset work",
+        "Drove adoption of a shared **shadcn/ui** and **Storybook** library that reduced duplicate components across teams",
+        "Debugged production UI with backend partners, improved error handling around auth and market-data gaps, and documented conventions that shortened onboarding"
       ],
-      "technologies": ["React", "TypeScript", "Socket.IO", "shadcn/ui", "Redux"]
+      "technologies": ["React", "TypeScript", "Socket.IO", "shadcn/ui", "Storybook", "JWT", "Redux"]
     },
     {
       "role": "Frontend Developer",
       "company": "Axon",
-      "period": "Jun 2020 — Jan 2022",
-      "location": "Tehran, Iran",
-      "description": "Developed and maintained responsive web applications; collaborated with cross-functional teams on **Redux**-based state and **performance**.",
+      "period": "Oct 2019 — Feb 2022",
+      "location": "Tehran · Healthcare marketing & CRM",
+      "description": "Started on marketing-facing pages and grew into CRM tooling and shared frontend structure — learning how SEO, design, and sales operations pull the same UI in different directions.",
       "achievements": [
-        "Owned dynamic landing pages and CMS surfaces; partnered with **SEO** to reduce handoff friction",
-        "Implemented **BEM** methodology — modular CSS, **~20%** faster delivery, fewer style regressions",
-        "Built interfaces with **Tailwind CSS**, Bootstrap, and Vuetify across product initiatives"
+        "Built **SEO**-oriented landing pages and responsive **SCSS** component patterns for axon.me with marketing and SEO stakeholders",
+        "Delivered CRM tables, admin dashboards, and multi-step workflows that cut repetitive manual work for sales and operations",
+        "Introduced **Redux** for multi-page state predictability and **BEM** modular CSS so new UI shipped faster with fewer style regressions",
+        "Translated stakeholder requests into maintainable component work instead of one-off page edits"
       ],
-      "technologies": ["React", "Redux", "Tailwind CSS", "Bootstrap", "Vuetify"]
-    },
-    {
-      "role": "Frontend Developer (Intern)",
-      "company": "Over Clock",
-      "period": "Jan 2020 — May 2020",
-      "location": "Tehran, Iran",
-      "description": "Early-career frontend role focused on community initiatives and solid **CSS architecture** fundamentals.",
-      "achievements": [
-        "Helped grow a community of frontend developers through meetups and virtual forums",
-        "Applied **Tailwind CSS**, Bootstrap, and Vuetify for production interfaces"
-      ],
-      "technologies": ["React", "CSS", "Tailwind CSS", "Bootstrap"]
+      "technologies": ["React", "Redux", "SCSS", "BEM", "SEO"]
     }
   ]
 }
